@@ -1,30 +1,42 @@
-# Azure Fundamentals (AZ-900) - Core Concepts
+# Azure Technical Portfolio
 
-This section of the repository documents my foundational journey into the Microsoft Azure ecosystem. It focuses on the core pillars of cloud computing: governance, architecture, and service models.
+This repository serves as a comprehensive documentation of my technical journey through the Microsoft Azure ecosystem, ranging from foundational cloud concepts to advanced infrastructure administration.
 
----
-
-## 🏗️ Knowledge Domains
-This portfolio demonstrates a deep understanding of:
-
-* **Cloud Concepts:** Distinguishing between **IaaS, PaaS, and SaaS** service models and choosing the right deployment for the business.
-* **Core Architecture:** Understanding Regions, Availability Zones, and Resource Groups to build highly available solutions.
-* **Azure Services:** Foundational knowledge of Compute (VMs, App Services), Storage, and Networking (Vnets, NSGs).
-* **Governance & Compliance:** Implementing Role-Based Access Control (RBAC), Azure Policy, and Resource Locks to maintain security.
-* **Pricing & Cost Management:** Using the TCO Calculator and Azure Advisor to optimize cloud spend and manage SLAs.
-
-
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![Cloud](https://img.shields.io/badge/Cloud-Azure-blue)
+![IaC](https://img.shields.io/badge/IaC-Bicep-blueviolet)
 
 ---
 
-## 🎯 Learning Goal
-My primary objective for this section was to build a rock-solid theoretical and practical foundation before progressing to the **AZ-104 (Administrator)**
+## 📂 Portfolio Structure
 
-> **Key Takeaway:** Cloud is not just about "where" you host data, but "how" you manage, secure, and scale it efficiently.
+### 🟦 [AZ-104: Azure Administrator](./AZ104/)
+Focuses on production-grade infrastructure, networking, and security.
+* **Featured Project:** [Secure ZRS Storage Architecture](./AZ104/01-Secure-ZRS-Storage/) - High availability and public access mitigation using Bicep.
+* **Key Skills:** Virtual Networking, RBAC, Storage Redundancy, Connectivity (Private Link).
+
+### 🟧 [AZ-900: Azure Fundamentals](./AZ900/)
+Foundational labs focused on core cloud architectural components.
+* **Featured Project:** [Resource Group Lifecycle](./AZ900/project-01-resource-groups/) - Logical management boundaries and resource inheritance.
+* **Key Skills:** Cloud Service Models (IaaS/PaaS/SaaS), Governance, Cost Management.
 
 ---
 
-## 📁 Repository Structure
-* `Concepts/`: Summaries of cloud service models and shared responsibility.
-* `Governance/`: Examples of Policy and RBAC implementations.
-* `Billing/`: Cost optimization case studies and TCO analysis.
+## 🛠️ Technical Stack
+* **Infrastructure as Code (IaC):** Azure Bicep
+* **Command Line:** Azure CLI, PowerShell
+* **Security:** Zero-Trust Methodology, Private Endpoints
+* **Governance:** Azure Policy, Resource Locks
+
+---
+
+## 📜 Governance & Compliance
+* **[LICENSE](./LICENSE):** This repository is licensed under the MIT License - feel free to use the code for learning purposes.
+* **[.gitignore](./.gitignore):** Configured to prevent the leakage of sensitive Azure credentials and local environment artifacts.
+
+---
+
+## 🎯 Current Objectives
+- [ ] AZ-900 Fundamentals (Complete)
+- [ ] AZ-104 Administrator Associate (In Progress)
+- [ ] AZ-305 Solutions Architect Expert (Targeted)
