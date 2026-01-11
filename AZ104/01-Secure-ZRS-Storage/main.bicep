@@ -1,15 +1,44 @@
-# Project 1: Secure ZRS Storage Architecture
+targetScope = 'resourceGroup'
 
-## Business Scenario
-The organization requires a storage solution for sensitive diagnostic data that must remain available even during a data center failure, while being completely isolated from the public internet.
+param location string = resourceGroup().location
 
-## Technical Configuration
-- Redundancy: Configured as Zone-Redundant Storage (ZRS). This replicates data across three availability zones in the region.
-- Network Security: Public Network Access is set to **Disabled**. 
-- Connectivity: Designed for Private Link** integration to ensure all traffic remains on the Microsoft backbone.
+// 1. Virtual Network Configuration
 
-## AZ-104 Exam Concepts Covered
-- Managing Storage Redundancy (Standard_LRS vs Standard_ZRS)
-- Configuring Network Access to Storage Accounts
-- Implementing Virtual Networks and Subnets
-- Infrastructure as Code (IaC) using Bicep
+resource vnet 'Microsoft.Network/virtualNetworks@2023-05-01' = {
+  name: 'vnet-secure-storage'
+  location: location
+  properties: {
+    addressSpace: {
+      addressPrefixes: [
+        '10.0.0.0/16'
+      ]
+    }
+    subnets: [
+      {
+        name: 'snet-private-link'
+        properties: {
+          addressPrefix: '10.0.1.0/24'
+        }
+      }
+    ]
+  }
+}
+
+// 2. Storage Account Configuration
+
+resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
+  name: 'stsecure${uniqueString(resourceGroup().id)}'
+  location: location
+  sku: {
+    name: 'Standard_ZRS'
+  }
+  kind: 'StorageV2'
+  properties: {
+    publicNetworkAccess: 'Disabled'
+    allowBlobPublicAccess: false
+    networkAcls: {
+      defaultAction: 'Deny'
+      bypass: 'AzureServices'
+    }
+  }
+}
