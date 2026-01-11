@@ -1,15 +1,14 @@
-# Project 1: Secure ZRS Storage Architecture
+## Deployment Evidence & Technical Analysis
 
-## Business Scenario
-The organization requires a storage solution for sensitive diagnostic data that must remain available even during a data center failure, while being completely isolated from the public internet.
+### 1. High Availability & Regional Resiliency
+![Storage Overview](./storage-overview.png)
+**Analysis:**
+* **Region (UK South):** Deployed to the London region to ensure data residency compliance and low latency for UK-based users.
+* **Redundancy (ZRS):** Configured **Zone-Redundant Storage**. Unlike LRS (Local), ZRS synchronously replicates data across three distinct Azure availability zones. This ensures the application remains available even if an entire data center facility experiences a power or cooling failure.
 
-## Technical Configuration
-- **Redundancy:** Configured as **Zone-Redundant Storage (ZRS)**. This replicates data across three availability zones in the region.
-- **Network Security:** Public Network Access is set to **Disabled**. 
-- **Connectivity:** Designed for **Private Link** integration to ensure all traffic remains on the Microsoft backbone.
-
-## AZ-104 Exam Concepts Covered
-- Managing Storage Redundancy (Standard_LRS vs Standard_ZRS)
-- Configuring Network Access to Storage Accounts
-- Implementing Virtual Networks and Subnets
-- Infrastructure as Code (IaC) using Bicep
+### 2. Zero-Trust Security Configuration
+![Storage Audit](./storage-audit.png)
+**Analysis:**
+* **Public Access (Disabled):** This is a "Zero-Trust" implementation. By disabling public access, the storage account is shielded from the public internet, mitigating risks of brute-force attacks or accidental data exposure.
+* **Network Isolation:** The audit confirms that traffic is restricted. In the next phase of this project, access will only be granted via **Private Endpoints**, ensuring data stays within the Azure backbone network.
+* **Infrastructure as Code (Verification):** The CLI output matches the Bicep template exactly, proving a successful transition from "Code" to "Cloud."
