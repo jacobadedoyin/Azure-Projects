@@ -1,36 +1,26 @@
-# Project 01: Resource Group & Storage Lifecycle
+# Project 01: Azure Governance & Resource Organization
 
-## Overview
-This project demonstrates the core Azure fundamental concept of **Resource Groups**. It explores how to organize, secure, and manage the lifecycle of multiple Azure resources as a single logical unit.
+## 🎯 Objective
+To demonstrate the ability to organize, secure, and track Azure resources using governance tools.
 
-## Business Scenario
-The marketing department requires a sandbox environment to store assets. The solution must ensure that all related resources (Storage, Networking, etc.) can be tracked for billing and deleted simultaneously when the project concludes to prevent "cloud sprawl" and unnecessary costs.
+## 📸 Governance Evidence
 
----
+### 1. Resource Tagging
+I implemented a tagging strategy to track costs by department and environment.
+![Resource Tags](resource-tags.png)
 
-## Technical Implementation
+### 2. Resource Locks
+I applied a 'CanNotDelete' lock to the storage account to prevent accidental deletion of critical data—a key part of the Azure Well-Architected Framework.
+![Resource Lock](resource-lock-active.png)
 
-### 1. Resource Group Provisioning
-* **Name:** `rg-marketing-sandbox`
-* **Region:** `UK South` (London)
-* **Purpose:** Acts as a management boundary for the storage assets.
-
-### 2. Resource Deployment
-Within this group, a Standard Storage Account was provisioned to test resource inheritance and management.
-
-<img src="https://raw.githubusercontent.com/jacobadedoyin/Azure-Projects/main/AZ900/project-01-resource-groups/storage-account-overview.png" width="700" alt="Storage Account Overview">
-
-
+### 3. Resource Group Organization
+This shows the logical grouping of resources, allowing for unified lifecycle management (deleting the group deletes everything inside).
+![Resource Group View](resource-group-hierarchy.png)
 
 ---
 
-## AZ-900 Concepts Demonstrated
-
-* **Resource Groups:** Using containers to manage multiple resources.
-* **Region Selection:** Understanding the importance of data residency and latency by deploying to `UK South`.
-* **Resource Tags:** (Optional) Applying metadata for cost center tracking.
-* **Lifecycle Management:** Demonstrating how deleting a Resource Group automatically cleans up all nested resources, ensuring cost efficiency.
-
-## Key Learnings
-1. **Management Boundaries:** Resource groups do not restrict technical communication between resources, but they are essential for administrative and billing boundaries.
-2. **Location Independence:** Resources within a group can technically reside in different regions than the group itself, though keeping them aligned is best practice for metadata residency.
+## 💡 Key AZ-900 Concepts Covered
+- **Resource Groups:** Acting as a logical container for resources.
+- **Azure Resource Manager (ARM):** The deployment and management service for Azure.
+- **Tags:** Metadata used for cost center allocation and organization.
+- **Locks:** Protecting resources from accidental modification or deletion.
