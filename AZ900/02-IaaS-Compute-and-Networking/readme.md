@@ -1,14 +1,26 @@
-# Project 02: Deploying an Azure Virtual Machine (IaaS)
+# Project 02: IaaS Compute and Networking
 
-## Overview
-This project demonstrates the deployment of an Azure Virtual Machine (VM) and the supporting infrastructure required for it to function. It highlights the **Infrastructure as a Service (IaaS)** model, where the user manages the OS and applications while Azure manages the underlying hardware.
+## 🎯 Objective
+To demonstrate the deployment of foundational Infrastructure as a Service (IaaS) components, including Virtual Machines and secure Virtual Networking.
 
-## Business Scenario
-A development team needs a sandbox environment to test a web application. The solution requires a Virtual Machine that can be accessed via RDP/SSH, secured by a firewall (NSG), and hosted within a dedicated Virtual Network.
+## 📸 Technical Evidence
 
+### 1. Virtual Network (VNet) Configuration
+I designed a Virtual Network to provide a private environment for Azure resources. This included defining the address space and subnets required for secure communication.
+![VNet Configuration](vnet-setup.png)
 
-## AZ-900 Concepts Demonstrated
+### 2. Virtual Machine Deployment
+I deployed a Virtual Machine (Compute) within the VNet. This involved selecting the appropriate size and OS image to meet specific workload requirements.
+![VM Overview](vm-deployment.png)
 
-* **IaaS (Infrastructure as a Service):** Managing the virtual machine lifecycle from deployment to maintenance.
-* **Shared Responsibility Model:** Azure manages the physical host and hypervisor; I manage the VM's OS, security patches, and network rules.
-* **Network Security:** Implementing the principle of least privilege by using **Network Security Groups** to filter traffic
+### 3. Network Security Group (NSG) Rules
+I configured NSG inbound rules to permit specific traffic (e.g., RDP/SSH) while blocking all other unauthorized access, demonstrating the "Principle of Least Privilege" in networking.
+![NSG Rules](nsg-security-rules.png)
+
+---
+
+## 💡 Key AZ-900 Concepts Covered
+- **IaaS (Infrastructure as a Service):** Managing servers, storage, and networking as virtualized services.
+- **Virtual Networks (VNet):** Providing isolation and segmentation for cloud resources.
+- **Network Security Groups (NSG):** Filtering network traffic to and from Azure resources.
+- **Public vs. Private IPs:** Understanding how resources communicate with the internet and each other.
