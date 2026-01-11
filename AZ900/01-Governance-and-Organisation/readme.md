@@ -1,19 +1,19 @@
-# Project 01: Azure Governance & Resource Organization
+# Project 01: Azure Governance & Resource Organisation
 
 ## 🎯 Objective
-To demonstrate the ability to organize, secure, and track Azure resources using governance tools.
+To demonstrate the ability to organise, secure, and track Azure resources using governance tools.
 
 ## 📸 Governance Evidence
 
 ### 1. Resource Tagging
-I implemented a tagging strategy to track costs by department and environment.
+I implemented a tagging strategy to track costs by department and environment. This allows for precise billing and resource ownership tracking.
 ![Resource Tags](resource-tags.png)
 
 ### 2. Resource Locks
 I applied a 'CanNotDelete' lock to the storage account to prevent accidental deletion of critical data—a key part of the Azure Well-Architected Framework.
 ![Resource Lock](resource-lock-active.png)
 
-### 3. Resource Group Organization
+### 3. Resource Group Organistion
 This shows the logical grouping of resources, allowing for unified lifecycle management (deleting the group deletes everything inside).
 ![Resource Group View](resource-group-hierarchy.png)
 
