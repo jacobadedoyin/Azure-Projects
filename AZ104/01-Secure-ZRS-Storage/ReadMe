@@ -2,7 +2,9 @@
 
 ### 1. High Availability & Regional Resiliency
 
-![Storage Overview](AZ104/01-Secure-ZRS-Storage/Storage-Overview.png)
+![Storage Overview](Storage-Overview.png)
+
+<br>
 
 Analysis:
 
@@ -13,7 +15,9 @@ Analysis:
 
 ### 2. Zero-Trust Security Configuration
 
-![Storage Audit](AZ104/01-Secure-ZRS-Storage/Storage-Audit.png)
+![Storage Audit](Storage-Audit.png)
+
+<br>
 
 Analysis:
 
