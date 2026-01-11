@@ -10,15 +10,16 @@ This repository serves as a comprehensive documentation of my technical journey 
 
 ## 📂 Portfolio Structure
 
+### 🟧 [AZ-900: Azure Fundamentals](./AZ900/)
+Foundational labs focused on core cloud architectural components.
+* **Featured Project:** [Resource Group Lifecycle](./AZ900/project-01-resource-groups/) - Logical management boundaries and resource inheritance.
+* **Key Skills:** Cloud Service Models (IaaS/PaaS/SaaS), Governance, Cost Management.
+
 ### 🟦 [AZ-104: Azure Administrator](./AZ104/)
 Focuses on production-grade infrastructure, networking, and security.
 * **Featured Project:** [Secure ZRS Storage Architecture](./AZ104/01-Secure-ZRS-Storage/) - High availability and public access mitigation using Bicep.
 * **Key Skills:** Virtual Networking, RBAC, Storage Redundancy, Connectivity (Private Link).
 
-### 🟧 [AZ-900: Azure Fundamentals](./AZ900/)
-Foundational labs focused on core cloud architectural components.
-* **Featured Project:** [Resource Group Lifecycle](./AZ900/project-01-resource-groups/) - Logical management boundaries and resource inheritance.
-* **Key Skills:** Cloud Service Models (IaaS/PaaS/SaaS), Governance, Cost Management.
 
 ---
 
