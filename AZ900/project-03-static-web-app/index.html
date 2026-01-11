@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure PaaS Demo | Static Web App</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #f4f7f9;
+        }
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-top: 5px solid #0078d4;
+        }
+        h1 { color: #0078d4; }
+        .status-badge {
+            background-color: #dff6dd;
+            color: #107c10;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        .feature-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        .feature-list li:before {
+            content: '✔';
+            position: absolute;
+            left: 0;
+            color: #0078d4;
+        }
+        footer {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #666;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span class="status-badge">Live on Azure PaaS</span>
+        <h1>Project 03: Static Web App Deployment</h1>
+        <p>This page is hosted using <strong>Azure Static Web Apps</strong>. It demonstrates the efficiency of Platform as a Service (PaaS).</p>
+        
+        <h3>Why PaaS?</h3>
+        <ul class="feature-list">
+            <li><strong>Zero Server Management:</strong> No OS updates or IIS/Apache configuration.</li>
+            <li><strong>Global Distribution:</strong> Automatically deployed to Azure's global content delivery network.</li>
+            <li><strong>Auto-Scaling:</strong> Handles traffic spikes without manual intervention.</li>
+            <li><strong>CI/CD Integration:</strong> Deployed automatically via GitHub Actions.</li>
+        </ul>
+
+        <p><em>"In an IaaS model (like a VM), I manage the server. In this PaaS model, I only manage the content."</em></p>
+    </div>
+    <footer>
+        Deployed by Jacob Adedoyin | AZ-900 Portfolio Project
+    </footer>
+</body>
+</html>
