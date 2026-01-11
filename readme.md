@@ -38,6 +38,6 @@ Focuses on production-grade infrastructure, networking, and security.
 ---
 
 ## 🎯 Current Objectives
-- [ ] AZ-900 Fundamentals (Complete)
+- [ ] AZ-900 Fundamentals (Jan)
 - [ ] AZ-104 Administrator Associate (In Progress)
-- [ ] AZ-305 Solutions Architect Expert (Targeted)
+
