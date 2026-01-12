@@ -14,7 +14,7 @@ I implemented a tagging strategy at the Resource Group level to track costs by d
 ### 2. Resource Locks
 I applied a **'CanNotDelete'** lock to the Resource Group. This serves as a critical safety guardrail, preventing the accidental deletion of production assets—a key principle of the Azure Well-Architected Framework.
 
-*(Note: Add your resource-lock.png here once captured)*
+![Resource Tagging](images/resource-lock.png)
 
 ### 3. Resource Group Organisation
 This view shows the logical grouping of resources within the 'Overview' pane. By expanding the **Essentials** section, we can verify the region (UK South) and the active tags in a single unified view.
