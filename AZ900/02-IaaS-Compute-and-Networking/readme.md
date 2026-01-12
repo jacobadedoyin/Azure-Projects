@@ -15,23 +15,23 @@ I designed a custom Virtual Network (`vm-lab-jacob-vnet`) in **North Europe**. T
 I deployed a **Linux (Ubuntu 22.04)** Virtual Machine. 
 * **Size:** Standard D2s v3 (2 vCPUs, 8 GiB memory)
 * **High Availability:** Deployed in **Availability Zone 3** for fault tolerance.
-* **Governance:** Applied tags to ensure the resource is identified within the project's cost center.
+* **Governance:** Applied tags to ensure the resource is identified within the project's cost centre.
 ![VM Essentials](images/vm-deployment-essentials.png)
 
 ### 3. Security Troubleshooting: Resolving the "Open Port" Risk
-During the initial setup, the Network Security Group (NSG) flagged a security risk. By default, allowing SSH on Port 22 from "Any" source which exposes the VM to brute-force attacks from the public internet.
+During the initial setup, the Network Security Group (NSG) flagged a security risk. By default, allowing SSH on Port 22 from "Any" source exposes the VM to brute-force attacks from the public internet.
 
 **The Security Risk (Open to Any):**
 ![NSG Security Error](images/nsg-security-rules-error.png)
 
 **The Resolution (Hardened Security):**
-I resolved this by implementing a **Source IP Filter**. I modified the NSG rules to only permit traffic from my specific administrative IP address (blocked out). All other traffic is dropped by the default `DenyAllInbound` rule.
+I resolved this by implementing a **Source IP Filter**. I modified the NSG rules to only permit traffic from my specific administrative IP address. All other traffic is dropped by the default `DenyAllInbound` rule, adhering to the **Principle of Least Privilege**.
 ![Hardened NSG Rules](images/nsg-security-rules.png)
 
 ---
 
 ## 💡 Key AZ-900 Concepts Covered
-- **IaaS (Infrastructure as a Service):** Managing the operating system and network settings while Azure manages the physical hardware.
-- **Availability Zones:** Using North Europe Zone 3 to protect against data center outages.
-- **Network Security Groups (NSG):** Operating as a stateful firewall to filter traffic.
-- **Principle of Least Privilege:** Restricting management access (SSH) to a single trusted IP rather than the entire internet.
+* **IaaS (Infrastructure as a Service):** Managing the operating system and network settings while Azure manages the physical hardware.
+* **Availability Zones:** Using North Europe Zone 3 to protect against data centre outages.
+* **Network Security Groups (NSG):** Operating as a stateful firewall to filter traffic.
+* **Security Guardrails:** Restricting management access (SSH) to a single trusted IP rather than the entire internet.
