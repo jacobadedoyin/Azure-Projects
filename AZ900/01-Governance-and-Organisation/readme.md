@@ -1,26 +1,36 @@
 # Project 01: Azure Governance & Resource Organisation
 
-## 🎯 Objective
-To demonstrate the ability to organise, secure, and track Azure resources using governance tools.
+🎯 **Objective** To demonstrate the ability to organise, secure, and track Azure resources using enterprise governance tools.
+
+---
 
 ## 📸 Governance Evidence
 
 ### 1. Resource Tagging
-I implemented a tagging strategy to track costs by department and environment. This allows for precise billing and resource ownership tracking.
-![Resource Tags](resource-tags.png)
+I implemented a tagging strategy at the Resource Group level to track costs by department and environment. This metadata allows for precise billing and clear resource ownership tracking.
+
+![Resource Tagging](images/resource-group-tags.png)
 
 ### 2. Resource Locks
-I applied a 'CanNotDelete' lock to the storage account to prevent accidental deletion of critical data—a key part of the Azure Well-Architected Framework.
-![Resource Lock](resource-lock-active.png)
+I applied a **'CanNotDelete'** lock to the Resource Group. This serves as a critical safety guardrail, preventing the accidental deletion of production assets—a key principle of the Azure Well-Architected Framework.
 
-### 3. Resource Group Organistion
-This shows the logical grouping of resources, allowing for unified lifecycle management (deleting the group deletes everything inside).
-![Resource Group View](resource-group-hierarchy.png)
+*(Note: Add your resource-lock.png here once captured)*
+
+### 3. Resource Group Organisation
+This view shows the logical grouping of resources within the 'Overview' pane. By expanding the **Essentials** section, we can verify the region (UK South) and the active tags in a single unified view.
+
+![Resource Group Overview](images/resource-group-overview.png)
+
+---
+
+## 🛠️ Advanced Governance: Automated Inheritance
+To ensure 100% compliance, I drafted an **Azure Policy** (see `inherit-tags-policy.json`) that forces resources to inherit the `Environment` and `AccountableParty` tags from their parent Resource Group automatically.
 
 ---
 
 ## 💡 Key AZ-900 Concepts Covered
-- **Resource Groups:** Acting as a logical container for resources.
-- **Azure Resource Manager (ARM):** The deployment and management service for Azure.
-- **Tags:** Metadata used for cost center allocation and organization.
-- **Locks:** Protecting resources from accidental modification or deletion.
+* **Resource Groups:** Serving as a logical container for lifecycle management.
+* **Azure Resource Manager (ARM):** The underlying service used to apply tags and locks.
+* **Tags:** Metadata used for cost center allocation and organization.
+* **Locks:** Protecting resources from accidental modification or deletion.
+* **Azure Policy:** Implementing automated guardrails at scale.
