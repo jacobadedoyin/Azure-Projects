@@ -6,10 +6,13 @@
 
 ## 📸 Governance Evidence
 
-### 1. Resource Tagging
-I implemented a tagging strategy at the Resource Group level to track costs by department and environment. This metadata allows for precise billing and clear resource ownership tracking across the subscription.
+#### 1. Resource Tagging Strategy
+I implemented a standardized tagging strategy at the Resource Group level. Using key-value pairs, I categorized resources to ensure clear ownership and financial accountability:
 
-![Resource Tagging](images/resource-group-tags.png)
+* **Environment:** (e.g., Production, Development, Test) - Used to distinguish between resource lifecycles.
+* **AccountableParty:** (e.g., Name of Dept or Lead) - Used for internal chargebacks and identifying the primary contact for resource maintenance.
+
+![Resource Tagging Evidence](images/resource-group-tags.png)
 
 ### 2. Resource Locks
 I applied a **'CanNotDelete'** lock to the Resource Group. This serves as a critical safety guardrail, preventing the accidental deletion of production assets—a key principle of the Azure Well-Architected Framework.
