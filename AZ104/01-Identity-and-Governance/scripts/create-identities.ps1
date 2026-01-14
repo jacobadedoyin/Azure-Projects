@@ -1,11 +1,22 @@
-# Create a security group for the IT Department
-$group = New-AzADGroup -DisplayName "IT-Admins" -MailNickname "itadmins"
+# 1. Create the Security Group
+$groupName = "IT-Admins"
+Write-Host "Creating Group: $groupName..."
+$group = New-AzADGroup -DisplayName $groupName -MailNickname "itadmins"
 
-# Create a new user and add them to the group
-$passwordProfile = New-Object -TypeName Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADUserPasswordProfile
-$passwordProfile.Password = "AzureTesting123!"
+# 2. Define User Details
+# IMPORTANT: Change 'yourdomain.com' to your actual primary domain from the Azure Portal
+$userUPN = "labadmin@yourdomain.com" 
+$securePassword = ConvertTo-SecureString "AzureTesting123!" -AsPlainText -Force
 
-New-AzADUser -DisplayName "Lab Admin" -UserPrincipalName "labadmin@yourdomain.com" -PasswordProfile $passwordProfile -AccountEnabled $true
+# 3. Create the User
+Write-Host "Creating User: $userUPN..."
+$user = New-AzADUser -DisplayName "Lab Admin" `
+                     -UserPrincipalName $userUPN `
+                     -Password $securePassword `
+                     -AccountEnabled $true
 
-# Add user to the IT-Admins group
-Add-AzADGroupMember -TargetGroupDisplayName "IT-Admins" -MemberUserPrincipalName "labadmin@yourdomain.com"
+# 4. Add User to Group
+Write-Host "Adding User to Group..."
+Add-AzADGroupMember -TargetGroupDisplayName $groupName -MemberUserPrincipalName $userUPN
+
+Write-Host "Done! Lab identities created successfully."
