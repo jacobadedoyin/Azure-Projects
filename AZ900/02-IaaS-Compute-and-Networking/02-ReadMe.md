@@ -1,4 +1,4 @@
-# 🖥️ Azure IaaS Compute & Networking
+# AZ900 Project 02: 🖥️ Azure IaaS Compute & Networking
 [![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)](https://azure.microsoft.com/)
 [![Networking](https://img.shields.io/badge/Networking-VNet-blue.svg?style=for-the-badge)](https://learn.microsoft.com/en-us/azure/virtual-network/)
 [![Security](https://img.shields.io/badge/Security-Hardening-red.svg?style=for-the-badge)](https://learn.microsoft.com/en-us/azure/network-security-group-overview)
@@ -69,4 +69,4 @@ I hardened the network by implementing a **Source IP Filter**. I modified the in
 * **Attack Surface Reduction:** Minimizing external exposure by limiting management ports to trusted sources.
 
 ---
-*Created by Jacob Adedoyin-Griffiths | Azure Infrastructure Portfolio*
+*Created by Jacob Adedoyin-Griffiths | Azure 900 Portfolio*
