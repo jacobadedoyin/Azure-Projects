@@ -44,22 +44,17 @@ Visual verification within the Azure Portal confirming the user status and group
 
 ## ⚖️ Phase 2: Governance & Cost Control
 
-
-<br>
-
-### 5. Policy Enforcement (Denial Proof)
-To validate the guardrails, I attempted to deploy a high-cost **Standard_D2s_v3** VM. The request was successfully intercepted and blocked by the Azure Policy engine.
+### 4. Policy as Code: Cost Optimization
+I authored a custom Azure Policy JSON definition to enforce cost governance. This policy acts as a guardrail, ensuring that only cost-effective **B-Series** virtual machines (Standard_B1s and Standard_B1ms) can be deployed.
 
 
 
-![Policy Denial](./images/05-policy-denial.png)
+**Deployment & Troubleshooting Workflow:**
+To deploy the policy, I synchronized the GitHub repository with the **Azure Cloud Shell** and executed the deployment via PowerShell.
 
----
-
-## 🧠 Key Takeaways
-* **Efficiency:** Reduced identity setup time from minutes to seconds via automation.
-* **Cost Governance:** Shifted from reactive cost monitoring to proactive prevention using Policy-as-Code.
-* **Security:** Implemented a standardized naming convention and group-based access control (RBAC).
-
----
-*Created by Jacob Adedoyin-Griffiths | AZ-104 Certification Lab*
+```powershell
+# Read and Register the Policy Definition
+$policyJson = Get-Content -Raw "./Enforce-Cost-Optimised-VM-Sizes.json"
+$definition = New-AzPolicyDefinition -Name "Enforce-Cost-Optimised-VM-Sizes" `
+                                     -DisplayName "Enforce Cost-Optimised VM Sizes" `
+                                     -Policy $policyJson
