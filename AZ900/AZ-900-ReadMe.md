@@ -12,7 +12,7 @@ This repository documents my hands-on implementation of Microsoft Azure core ser
 
 | Project | Focus Area | Key Technologies |
 | :--- | :--- | :--- |
-| **[Project 01: Governance & Organization](./01-Governance-and-Organisation/)** | Enterprise Guardrails | Resource Groups, Tagging, `CanNotDelete` Locks |
+| **[Project 01: Governance & Organisation](./01-Governance-and-Organisation/)** | Enterprise Guardrails | Resource Groups, Tagging, `CanNotDelete` Locks |
 | **[Project 02: IaaS Compute & Networking](./02-IaaS-Compute-and-Networking/)** | Infrastructure Fundamentals | Virtual Machines (Ubuntu), VNet, NSG Security |
 | **[Project 03: PaaS Automation Deployment](./03-PaaS-Automation-Deployment/)** | DevOps & Modern Apps | Static Web Apps, GitHub Actions, CI/CD Pipelines |
 
@@ -27,12 +27,12 @@ This repository documents my hands-on implementation of Microsoft Azure core ser
 
 ### ⚙️ Automation & DevOps
 * **CI/CD:** Automating application deployments using GitHub Actions.
-* **Policy as Code:** Enforcing organizational compliance through Azure Policy definitions.
+* **Policy as Code:** Enforcing organisational compliance through Azure Policy definitions.
 * **Infrastructure as Code:** Scripting environment setups to ensure 100% reproducibility.
 
 ### 💰 Cloud Economics (FinOps)
 * **Cost Center Allocation:** Implementing strategic tagging for financial accountability.
-* **Service Selection:** Choosing between IaaS and PaaS models to optimize operational overhead and cost.
+* **Service Selection:** Choosing between IaaS and PaaS models to optimise operational overhead and cost.
 
 
 
