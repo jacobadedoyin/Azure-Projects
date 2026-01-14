@@ -5,7 +5,7 @@ $group = New-AzADGroup -DisplayName $groupName -MailNickname "itadmins"
 
 # 2. Define User Details
 # IMPORTANT: Change 'yourdomain.com' to your actual primary domain from the Azure Portal
-$userUPN = "labadmin@yourdomain.com" 
+$userUPN = "jacobadedoyingriffithsgmail.onmicrosoft.com" 
 $securePassword = ConvertTo-SecureString "AzureTesting123!" -AsPlainText -Force
 
 # 3. Create the User
