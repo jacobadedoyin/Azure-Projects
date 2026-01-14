@@ -1,23 +1,26 @@
-# 1. Create Group (Only if it doesn't exist)
-$groupName = "IT-Admins"
-$existingGroup = Get-AzADGroup -DisplayName $groupName -ErrorAction SilentlyContinue
+param (
+    [string]$GroupName = "IT-Admins",
+    [string]$UserUPN = "labadmin@jacobadedoyingriffithsgmail.onmicrosoft.com",
+    [string]$DisplayName = "Lab Admin"
+)
 
+# --- CHECK FOR GROUP ---
+$existingGroup = Get-AzADGroup -DisplayName $GroupName -ErrorAction SilentlyContinue | Select-Object -First 1
 if ($null -eq $existingGroup) {
-    Write-Host "Group '$groupName' not found. Creating it..." -ForegroundColor Cyan
-    New-AzADGroup -DisplayName $groupName -MailNickname "itadmins" -SecurityEnabled
-} else {
-    Write-Host "Group '$groupName' already exists. Skipping creation." -ForegroundColor Yellow
+    Write-Host "Creating Group: $GroupName" -ForegroundColor Cyan
+    $existingGroup = New-AzADGroup -DisplayName $GroupName -MailNickname ($GroupName -replace " ","") -SecurityEnabled
 }
 
-# 2. Create User (Only if it doesn't exist)
-$userUPN = "labadmin@jacobadedoyingriffithsgmail.onmicrosoft.com"
-$existingUser = Get-AzADUser -UserPrincipalName $userUPN -ErrorAction SilentlyContinue
-
+# --- CHECK FOR USER ---
+$existingUser = Get-AzADUser -UserPrincipalName $UserUPN -ErrorAction SilentlyContinue
 if ($null -eq $existingUser) {
-    Write-Host "User '$userUPN' not found. Creating it..." -ForegroundColor Cyan
+    Write-Host "Creating User: $DisplayName" -ForegroundColor Cyan
     $passwordProfile = New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordProfile
     $passwordProfile.Password = "Pa55w0rd123!"
-    New-AzADUser -DisplayName "Lab Admin" -PasswordProfile $passwordProfile -UserPrincipalName $userUPN -AccountEnabled -MailNickname "labadmin"
-} else {
-    Write-Host "User '$userUPN' already exists. Skipping creation." -ForegroundColor Yellow
+    $existingUser = New-AzADUser -DisplayName $DisplayName -PasswordProfile $passwordProfile -UserPrincipalName $UserUPN -AccountEnabled -MailNickname ($DisplayName -replace " ","")
 }
+
+# --- ADD TO GROUP (Using the ID we just captured) ---
+# This is the "Surgical" fix that bypasses the naming bugs we saw earlier
+Add-AzADGroupMember -TargetGroupId $existingGroup.Id -MemberId $existingUser.Id -ErrorAction SilentlyContinue
+Write-Host "Lab Complete: $DisplayName is now in $GroupName" -ForegroundColor Green
