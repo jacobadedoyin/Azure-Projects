@@ -41,20 +41,17 @@ process {
         Write-Host "[i] User '$UserUPN' already exists." -ForegroundColor Gray
     }
 
-    # 4. MEMBERSHIP MANAGEMENT (Using the syntax confirmed by your terminal)
+    # 4. MEMBERSHIP MANAGEMENT (The 'No-Nonsense' Fix)
     Write-Host "[*] Synchronizing Membership..." -ForegroundColor Cyan
     try {
-        # Check if already a member
-        $currentMembers = Get-AzADGroupMember -GroupObjectId (Get-AzADGroup -DisplayName $GroupName).Id
-        if ($currentMembers.UserPrincipalName -notcontains $UserUPN) {
-            Add-AzADGroupMember -TargetGroupDisplayName $GroupName -MemberUserPrincipalName $UserUPN -ErrorAction Stop
-            Write-Host "[✔] User successfully added to Group." -ForegroundColor Green
-        } else {
-            Write-Host "[i] User is already a member." -ForegroundColor Gray
-        }
+        # This is the EXACT line that worked in your terminal earlier
+        Add-AzADGroupMember -TargetGroupDisplayName $GroupName -MemberUserPrincipalName $UserUPN -ErrorAction Stop
+        Write-Host "[✔] User successfully linked to Group." -ForegroundColor Green
     } catch {
-        Write-Host "[✘] Membership failed: $($_.Exception.Message)" -ForegroundColor Red
+        # If the user is already there, it throws an error, so we catch it here
+        if ($_.Exception.Message -like "*already exists*") {
+            Write-Host "[i] User is already a member." -ForegroundColor Gray
+        } else {
+            Write-Host "[✘] Error: $($_.Exception.Message)" -ForegroundColor Red
+        }
     }
-
-    Write-Host "--- Deployment Complete ---`n" -ForegroundColor Cyan
-}
