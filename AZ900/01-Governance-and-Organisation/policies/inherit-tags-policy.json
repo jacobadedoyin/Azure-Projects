@@ -1,1 +1,39 @@
-
+{
+  "displayName": "Inherit Environment and AccountableParty tags from Resource Group",
+  "description": "Ensures that all resources within the group inherit key governance tags for cost tracking.",
+  "mode": "Indexed",
+  "policyRule": {
+    "if": {
+      "allOf": [
+        {
+          "field": "tags['Environment']",
+          "exists": "false"
+        },
+        {
+          "field": "tags['AccountableParty']",
+          "exists": "false"
+        }
+      ]
+    },
+    "then": {
+      "effect": "modify",
+      "details": {
+        "roleDefinitionIds": [
+          "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+        ],
+        "operations": [
+          {
+            "operation": "add",
+            "field": "tags['Environment']",
+            "value": "[resourceGroup().tags['Environment']]"
+          },
+          {
+            "operation": "add",
+            "field": "tags['AccountableParty']",
+            "value": "[resourceGroup().tags['AccountableParty']]"
+          }
+        ]
+      }
+    }
+  }
+}
