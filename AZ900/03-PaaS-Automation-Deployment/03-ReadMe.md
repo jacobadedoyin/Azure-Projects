@@ -1,4 +1,4 @@
-# 🌐 Azure Static Web Apps & CI/CD Automation
+# Project 03: 🌐 Azure Static Web Apps & CI/CD Automation
 [![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)](https://azure.microsoft.com/)
 [![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-%232088FF.svg?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/features/actions)
 [![PaaS](https://img.shields.io/badge/Architecture-PaaS-orange.svg?style=for-the-badge)](https://learn.microsoft.com/en-us/azure/static-web-apps/overview)
@@ -62,4 +62,4 @@ The final HTML application is hosted on Azure's global infrastructure. It is ser
 In accordance with **Cloud Cost Management** best practices, all resources were decommissioned immediately after documentation to prevent unnecessary billing.
 
 ---
-*Created by Jacob Adedoyin-Griffiths | AZ900 Portfolio
+*Created by Jacob Adedoyin-Griffiths | Azure 900 Portfolio
