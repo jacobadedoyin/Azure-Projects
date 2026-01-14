@@ -50,20 +50,21 @@ process {
         Write-Host "[i] User '$UserUPN' already exists." -ForegroundColor Gray
     }
 
-    # 4. MEMBERSHIP MANAGEMENT (The 'Surgical' Fix)
+    # 4. MEMBERSHIP MANAGEMENT (The 'Stable' Fix)
     Write-Host "[*] Synchronizing Membership..." -ForegroundColor Cyan
     try {
-        # Check if already a member to avoid errors
+        # Using the Object ID directly is the most reliable method
         $isMember = Get-AzADGroupMember -GroupObjectId $targetGroup.Id | Where-Object { $_.Id -eq $targetUser.Id }
+        
         if (-not $isMember) {
-            Add-AzADGroupMember -TargetGroupId $targetGroup.Id -MemberId $targetUser.Id -ErrorAction Stop
+            # New-AzADGroupMember is often more stable than 'Add-AzADGroupMember' in Cloud Shell
+            New-AzADGroupMember -GroupObjectId $targetGroup.Id -MemberObjectId $targetUser.Id -ErrorAction Stop
             Write-Host "[✔] User successfully added to Group." -ForegroundColor Green
         } else {
             Write-Host "[i] User is already a member of the group." -ForegroundColor Gray
         }
     } catch {
-        Write-Host "[✘] Failed to link user. You may need to add them via the Azure Portal." -ForegroundColor Red
-        Write-Debug $_.Exception.Message
+        Write-Host "[✘] Error linking user: $($_.Exception.Message)" -ForegroundColor Red
     }
 
     Write-Host "--- Deployment Complete ---`n" -ForegroundColor Cyan
