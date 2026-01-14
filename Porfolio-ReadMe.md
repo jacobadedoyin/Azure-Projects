@@ -12,7 +12,7 @@ This repository serves as a comprehensive documentation of my technical journey 
 
 ### 🟧 [AZ-900: Azure Fundamentals](./AZ900/)
 Foundational labs focused on core cloud architectural components.
-* **Featured Project:** [Resource Group Lifecycle](./AZ900/project-01-resource-groups/) - Logical management boundaries and resource inheritance.
+* **Featured Project:** [Resource Group Lifecycle](./AZ900/01-Governance-and-Organisation/01-ReadMe.md/) - Logical management boundaries and resource inheritance.
 * **Key Skills:** Cloud Service Models (IaaS/PaaS/SaaS), Governance, Cost Management.
 
 ### 🟦 [AZ-104: Azure Administrator](./AZ104/)
