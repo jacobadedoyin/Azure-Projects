@@ -1,49 +1,72 @@
-# Project 1: Identity and Governance (AZ-104)
+# ☁️ Azure Identity & Governance Automation
+[![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)](https://azure.microsoft.com/)
+[![PowerShell](https://img.shields.io/badge/PowerShell-%235391FE.svg?style=for-the-badge&logo=powershell&logoColor=white)](https://learn.microsoft.com/en-us/powershell/azure/)
 
-## Overview
-This project demonstrates the foundational setup of an Azure environment. It focuses on automating user management and enforcing organizational compliance through **Azure Policy** and **RBAC (Role-Based Access Control)**.
-
-## Project Components
-
-### 1. Identity Automation (`/scripts`) 🟢 **COMPLETE**
-* **File:** `create-identities.ps1`
-* **Description:** A custom PowerShell script that automates the creation of Microsoft Entra ID users and security groups.
-* **Skills Demonstrated:** Azure PowerShell (Az Module), CLI Parameter handling, Identity Lifecycle Management.
-
-### 2. Governance & Compliance (`/policies`) 🟡 **IN PROGRESS**
-* **File:** `allowed-vms.json`
-* **Description:** A custom Azure Policy definition that restricts the deployment of Virtual Machines to specific SKUs (Standard_B1s, Standard_B2s). 
-* **Goal:** Cost management and preventing "shadow IT" from deploying expensive resources.
+## 📌 Project Overview
+This project demonstrates a production-ready setup of an Azure environment. It focuses on **Identity Lifecycle Management** and **Automated Governance**. The objective was to replace manual portal configurations with reproducible **PowerShell scripts** and **Policy as Code**.
 
 ---
 
-## Implementation Steps
-1. **Automated Provisioning:** Executed `create-identities.ps1` to programmatically create the `IT-Admins` security group and the `Jacob Admin` user.
-2. **Membership Sync:** Verified that the user was successfully added to the administrative group via the Graph API/Az Module.
-3. **Evidence Collection:** Captured CLI and Portal outputs to validate successful deployment.
+## 🛠️ Technical Stack & Tools
+| Category | Tools Used |
+| :--- | :--- |
+| **Cloud Platform** | Microsoft Azure |
+| **Identity Management** | Microsoft Entra ID (Azure AD) |
+| **Automation** | Azure PowerShell (Az Module) |
+| **Governance** | Azure Policy (JSON Definitions) |
+| **Version Control** | Git / GitHub |
 
 ---
 
-## Success Metrics & Verification
+## 🚀 Phase 1: Identity Automation
+I developed the `create-identities.ps1` script to programmatically provision the **IT-Admins** security group and the **Jacob Admin** user account.
 
 ### 1. Script Execution
-The script successfully provisioned the administrative identity and verified group existence.
+The script handles user creation and group membership assignment in one flow.
+
 ![Script Execution](./images/01-script-execution.png)
 
+<br>
+
 ### 2. CLI Membership Verification
-Using `Get-AzADGroupMember` to confirm **Jacob Admin** is a member of **IT-Admins**.
+Using `Get-AzADGroupMember` to confirm that the **Jacob Admin** identity is correctly nested within the administrative group.
+
 ![CLI Verification](./images/02-cli-verification.png)
 
-### 3. Portal Confirmation
-Visual verification within Microsoft Entra ID confirming the new user and group membership.
+<br>
+
+### 3. Entra ID Portal Confirmation
+Visual verification within the Azure Portal confirming the user status and group membership.
+
 ![Portal Verification](./images/03-portal-group-members.png)
 
 ---
 
-## Upcoming Tasks
-- [ ] **Policy Assignment:** Apply `allowed-vms.json` to the subscription scope.
-- [ ] **Policy Testing:** Attempt to deploy a `Standard_D8s_v3` VM to verify the denial trigger.
-- [ ] **RBAC Verification:** Confirm that users in the "Marketing" group (Reader) cannot delete resources.
+## ⚖️ Phase 2: Governance & Cost Control
+To prevent budget overruns, I implemented a custom Azure Policy that restricts Virtual Machine deployments to low-cost SKUs (**Standard_B1s** and **Standard_B2s**).
+
+### 4. Policy Deployment
+The following screenshot shows the successful execution of the `deploy-governance.ps1` script, which registers the policy definition and applies it at the Subscription scope.
+
+
+
+![Policy Deployment](./images/04-policy-deploy.png)
+
+<br>
+
+### 5. Policy Enforcement (Denial Proof)
+To validate the guardrails, I attempted to deploy a high-cost **Standard_D2s_v3** VM. The request was successfully intercepted and blocked by the Azure Policy engine.
+
+
+
+![Policy Denial](./images/05-policy-denial.png)
 
 ---
-*This lab is part of my preparation for the AZ-104: Microsoft Azure Administrator certification.*
+
+## 🧠 Key Takeaways
+* **Efficiency:** Reduced identity setup time from minutes to seconds via automation.
+* **Cost Governance:** Shifted from reactive cost monitoring to proactive prevention using Policy-as-Code.
+* **Security:** Implemented a standardized naming convention and group-based access control (RBAC).
+
+---
+*Created by Jacob Adedoyin-Griffiths | AZ-104 Certification Lab*
