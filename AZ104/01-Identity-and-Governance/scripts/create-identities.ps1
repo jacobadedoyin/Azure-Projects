@@ -22,7 +22,7 @@ if (-not (Get-AzADUser -UserPrincipalName $UserUPN -ErrorAction SilentlyContinue
     New-AzADUser -DisplayName $UserDisplay -UserPrincipalName $UserUPN -AccountEnabled $true -MailNickname "labadmin" -PasswordProfile @{Password="Pa55w0rd123!"} | Out-Null
 }
 
-# 3. The Link (This uses the strings you pass via CLI)
+# 3. The Link (The only command that matters)
 Write-Host "[*] Synchronizing Membership..."
 Add-AzADGroupMember -TargetGroupDisplayName $GroupName -MemberUserPrincipalName $UserUPN -ErrorAction SilentlyContinue
 
