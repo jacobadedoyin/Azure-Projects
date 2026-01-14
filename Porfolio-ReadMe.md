@@ -10,10 +10,12 @@ This repository serves as a comprehensive documentation of my technical journey 
 
 ## 📂 Portfolio Structure
 
-### 🟧 [AZ-900: Azure Fundamentals](./AZ900/)
-Foundational labs focused on core cloud architectural components.
-* **Featured Project:** [Resource Group Lifecycle](./AZ900/01-Governance-and-Organisation/01-ReadMe.md/) - Logical management boundaries and resource inheritance.
-* **Key Skills:** Cloud Service Models (IaaS/PaaS/SaaS), Governance, Cost Management.
+## 🟧 [AZ-900: Azure Fundamentals](./AZ900/)
+Foundational labs focused on core cloud architectural components and the shared responsibility model.
+* **Project 01:** [Governance & Organisation](./AZ900/01-Governance-and-Organisation/) — Logical management boundaries, tagging, and resource inheritance.
+* **Project 02:** [IaaS Compute & Networking](./AZ900/02-IaaS-Compute-and-Networking/) — Virtual machine deployment with NSG firewall hardening.
+* **Project 03:** [PaaS & CI/CD](./AZ900/03-PaaS-Automation-Deployment/) — Automating web deployments via GitHub Actions pipelines.
+* **Key Skills:** Cloud Service Models (IaaS/PaaS/SaaS), Governance, FinOps.
 
 ### 🟦 [AZ-104: Azure Administrator](./AZ104/)
 Focuses on production-grade infrastructure, networking, and security.
