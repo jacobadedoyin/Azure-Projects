@@ -5,28 +5,25 @@ param (
     [Parameter(Mandatory=$true)]
     [string]$UserUPN,
 
-    [Parameter(Mandatory=$false)]
     [string]$UserDisplay = "Lab Admin"
 )
 
 Write-Host "`n--- Starting Identity Deployment ---" -ForegroundColor Cyan
 
-# 1. Ensure Group Exists (Picks the first one if duplicates exist)
-$targetGroup = Get-AzADGroup -DisplayName $GroupName -ErrorAction SilentlyContinue | Select-Object -First 1
-if (-not $targetGroup) {
-    Write-Host "[+] Creating Group: $GroupName" -ForegroundColor Green
-    New-AzADGroup -DisplayName $GroupName -MailNickname ($GroupName -replace " ","") -SecurityEnabled | Out-Null
+# 1. Check Group
+if (-not (Get-AzADGroup -DisplayName $GroupName -ErrorAction SilentlyContinue)) {
+    Write-Host "[+] Creating Group: $GroupName"
+    New-AzADGroup -DisplayName $GroupName -MailNickname "itadmins" -SecurityEnabled | Out-Null
 }
 
-# 2. Ensure User Exists
+# 2. Check User
 if (-not (Get-AzADUser -UserPrincipalName $UserUPN -ErrorAction SilentlyContinue)) {
-    Write-Host "[+] Creating User: $UserUPN" -ForegroundColor Green
+    Write-Host "[+] Creating User: $UserUPN"
     New-AzADUser -DisplayName $UserDisplay -UserPrincipalName $UserUPN -AccountEnabled $true -MailNickname "labadmin" -PasswordProfile @{Password="Pa55w0rd123!"} | Out-Null
 }
 
-# 3. Link them using the CLI-safe command
-Write-Host "[*] Synchronizing Membership..." -ForegroundColor Cyan
-# We use -ErrorAction SilentlyContinue because if they are already linked, we don't care
+# 3. The Link (This uses the strings you pass via CLI)
+Write-Host "[*] Synchronizing Membership..."
 Add-AzADGroupMember -TargetGroupDisplayName $GroupName -MemberUserPrincipalName $UserUPN -ErrorAction SilentlyContinue
 
-Write-Host "[✔] Deployment Complete ---`n" -ForegroundColor Green
+Write-Host "[✔] Deployment Complete!" -ForegroundColor Green
