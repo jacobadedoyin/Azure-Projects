@@ -62,4 +62,4 @@ The final HTML application is hosted on Azure's global infrastructure. It is ser
 In accordance with **Cloud Cost Management** best practices, all resources were decommissioned immediately after documentation to prevent unnecessary billing.
 
 ---
-*Created by Jacob Adedoyin-Griffiths | Azure DevOps & Cloud Portfolio*
+*Created by Jacob Adedoyin-Griffiths | AZ900 Portfolio
