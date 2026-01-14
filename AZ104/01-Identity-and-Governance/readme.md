@@ -43,14 +43,7 @@ Visual verification within the Azure Portal confirming the user status and group
 ---
 
 ## ⚖️ Phase 2: Governance & Cost Control
-To prevent budget overruns, I implemented a custom Azure Policy that restricts Virtual Machine deployments to low-cost SKUs (**Standard_B1s** and **Standard_B2s**).
 
-### 4. Policy Deployment
-The following screenshot shows the successful execution of the `deploy-governance.ps1` script, which registers the policy definition and applies it at the Subscription scope.
-
-
-
-![Policy Deployment](./images/04-policy-deploy.png)
 
 <br>
 
