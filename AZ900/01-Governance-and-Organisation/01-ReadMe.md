@@ -1,9 +1,9 @@
-# Project 01: 🏛️ Azure Governance & Resource Organization
+# Project 01: 🏛️ Azure Governance & Resource Organisation
 [![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)](https://azure.microsoft.com/)
 [![Governance](https://img.shields.io/badge/Governance-Compliance-green.svg?style=for-the-badge)](https://learn.microsoft.com/en-us/azure/governance/)
 
 ## 🎯 Project Objective
-To demonstrate the ability to organize, secure, and track Azure resources using enterprise governance tools. This project ensures cloud environments remain compliant, cost-accountable, and protected from human error through automated guardrails.
+To demonstrate the ability to organise, secure, and track Azure resources using enterprise governance tools. This project ensures cloud environments remain compliant, cost-accountable, and protected from human error through automated guardrails.
 
 ---
 
@@ -19,9 +19,7 @@ To demonstrate the ability to organize, secure, and track Azure resources using 
 ---
 
 ## 📸 Phase 1: Resource Tagging & Organization
-I implemented a standardized tagging strategy at the Resource Group level. Using key-value pairs, I categorized resources to ensure clear ownership and financial accountability for internal chargebacks.
-
-
+I implemented a standardised tagging strategy at the Resource Group level. Using key-value pairs, I categorised resources to ensure clear ownership and financial accountability for internal chargebacks.
 
 ### 1. Resource Tagging Strategy
 * **Environment:** (e.g., Production, Dev, Test) - Distinguishes between resource lifecycles.
@@ -39,19 +37,19 @@ This view shows the logical grouping of resources. By expanding the **Essentials
 ---
 
 ## 🔒 Phase 2: Resource Locks & Safety Guardrails
-I applied a **'CanNotDelete'** lock to the Resource Group. This serves as a critical safety guardrail, preventing accidental deletion of production assets—a key principle of the **Azure Well-Architected Framework**.
+I applied a **'CanNotDelete'** lock to the Resource Group. This serves as a critical safety guardrail, preventing accidental deletion of production assets - a key principle of the **Azure Well-Architected Framework**.
 
 
 
 ### 3. Validation: Resource Group Level
-The system blocks any manual attempt to delete the entire Resource Group container.
+The system blocks any manual attempt to delete the entire Resource Group container, preserving the project's foundational structure.
 
 ![Resource Group Lock Test](images/delete-lock-test.png)
 
 <br>
 
 ### 4. Validation: Scope Inheritance
-To test inheritance, I attempted to delete an individual storage account (`storeproof2026`). The **Azure Resource Manager (ARM)** blocked the request with a `ScopeLocked` error, proving that a parent lock successfully protects all nested child resources.
+To test inheritance, I attempted to delete an individual storage account (`storeproof2026`). The **Azure Resource Manager (ARM)** blocked the request with a `ScopeLocked` error, proving that a parent lock successfully protects all nested child resources automatically.
 
 ![Lock Inheritance Validation](images/lock-inheritance-validation.png)
 
@@ -61,32 +59,32 @@ To test inheritance, I attempted to delete an individual storage account (`store
 To ensure 100% compliance, I deployed a custom **Azure Policy** using the **Modify** effect. This effect actively remediates non-compliant resources by injecting required tags during the deployment phase.
 
 ### 5. Policy Assignment
-The policy was assigned to the `RG-Governance-Lab` scope, specifically targeting tag inheritance across all resource types.
+The policy was assigned to the `RG-Governance-Lab` scope, specifically targeting tag inheritance across all resource types to maintain metadata consistency.
 
 ![Policy Assignment Proof](images/assign-policy.png)
 
 <br>
 
 ### 6. Technical Validation (Activity Log)
-The Azure Activity Log confirms the **Modify** action was successfully triggered during the creation of a test storage account. This proves the policy intercepted the request and enforced the organizational tags.
+The Azure Activity Log confirms the **Modify** action was successfully triggered during the creation of a test storage account. This proves the policy intercepted the request and enforced the organisational tags.
 
 ![Policy Activity Log Proof](images/policy-activity-log.png)
 
 <br>
 
 ### 7. Final Remediation Result
-Even though tags were omitted during the manual setup, the account now carries the inherited metadata required for corporate billing.
+Even though tags were omitted during the manual setup of the test resource, the account now carries the inherited metadata required for corporate billing and lifecycle management.
 
 ![Policy Tag Validation](images/tag-policy-validation.png)
 
 ---
 
 ## 🧠 Key Cloud Concepts Covered
-* **Resource Groups:** Logical containers for lifecycle management.
-* **ARM Templates:** Applying tags and locks via JSON-based definitions.
-* **Metadata Management:** Using Tags for cost center allocation and security.
-* **Inheritance:** Leveraging scope-level locks to protect child resources.
-* **Policy Remediation:** Automating governance at scale using the **Modify** effect.
+* **Resource Groups:** Logical containers for lifecycle management and security boundaries.
+* **ARM Layer:** Applying governance controls via JSON-based definitions at the management plane.
+* **Metadata Management:** Using Tags for cost center allocation and automated resource categorisation.
+* **Inheritance:** Leveraging scope-level locks to protect child resources and simplify administration.
+* **Policy Remediation:** Automating governance at scale using the **Modify** effect to correct non-compliant resources.
 
 ---
 *Created by Jacob Adedoyin-Griffiths | Azure Cloud Portfolio*
