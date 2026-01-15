@@ -51,20 +51,32 @@ I authored a [custom Azure Policy JSON definition](./policies/Enforce-Cost-Optim
 ![CLI Verification](./images/04-policy-deploy.png)
 
 ### 🔍 Validation: Testing the Guardrails
-To verify the guardrails, I attempted to create a high-performance **D-Series** VM. The policy immediately flagged the violation during the validation phase.
+To verify the guardrails, I attempted to create a high-performance **D-Series** VM.
 
-![Policy Assignment Proof](./images/05-policy-assignment.png)
+**1. Scope Restriction:**
+The VM size selector immediately reflected the policy restrictions. Non-compliant sizes were unavailable, showing that the policy was actively affecting the scope of deployable resources.
+
+![VM Size Scope](./images/05-vm-size-scope.png)
 <br>
 
-When attempting to proceed, the deployment was explicitly blocked by the below message, confirming that the guardrail works.
+**2. Policy Identification:**
+The portal explicitly identified the `Enforce-Small-VM` policy assignment as the reason for the restriction, providing immediate feedback to the user.
+
+![Policy Assignment Proof](./images/06-policy-assignment.png)
 <br>
 
-![Policy Denial Error](./images/06-policy-denial.png)
+**3. Deployment Block:**
+As further proof of enforcement, the system explicitly prevented the selection of non-compliant resources with a **"Blocked by Policy"** status and the message: *"Your organization has Azure Policies in place that restrict these."*
+
+![Policy Denial Error](./images/07-policy-denial.png)
 <br>
 
 **Key Observations:**
-* **Real-Time Enforcement:** The policy was active immediately during the VM configuration process.
-* **Activity Log Verification:** I confirmed the event in the **Azure Activity Log**, which recorded the blocked deployment with a `Forbidden` status.
-* **Traceability:** The error message explicitly cites the `Enforce-Cost-Optimised-VM-Sizes` policy as the cause, providing a clear audit trail.
+* **Proactive Filtering:** The policy filtered the list of available VM sizes before I could even select one, saving time and preventing errors.
+* **Clear Attribution:** The portal correctly linked the restriction back to the specific `Enforce-Small-VM` policy assignment.
+* **Hard Governance:** The system enforced a hard stop with a clear "Blocked by Policy" notification, making it impossible to bypass controls.
 
+**Key Observations:**
+* **Proactive Filtering:** The policy filtered the list of available VM sizes before I could even select one, saving time and preventing errors.
+* **Clear Attribution:** The portal correctly linked the restriction back to the specific `Enforce-Small-VM` policy assignment.
 
