@@ -42,19 +42,15 @@ Visual verification within the Azure Portal confirming the user status and group
 
 ---
 
-## ⚖️ Phase 2: Governance & Cost Control
+### ⚖️ Phase 2: Governance & Cost Control
 
 ### 4. Policy as Code: Cost Optimization
-I authored a custom Azure Policy JSON definition to enforce cost governance. This policy acts as a guardrail, ensuring that only cost-effective **B-Series** virtual machines (Standard_B1s and Standard_B1ms) can be deployed.
+I authored a [custom Azure Policy JSON definition](./policies/Enforce-Cost-Optimised-VM-Sizes.json) to enforce cost governance. This policy acts as a guardrail, ensuring that only cost-effective **B-Series** virtual machines (Standard_B1s and Standard_B1ms) can be deployed.
+
+![CLI Verification](./images/04-policy-deploy.png)
 
 
 
-**Deployment & Troubleshooting Workflow:**
-To deploy the policy, I synchronized the GitHub repository with the **Azure Cloud Shell** and executed the deployment via PowerShell.
 
-```powershell
-# Read and Register the Policy Definition
-$policyJson = Get-Content -Raw "./Enforce-Cost-Optimised-VM-Sizes.json"
-$definition = New-AzPolicyDefinition -Name "Enforce-Cost-Optimised-VM-Sizes" `
-                                     -DisplayName "Enforce Cost-Optimised VM Sizes" `
-                                     -Policy $policyJson
+
+
