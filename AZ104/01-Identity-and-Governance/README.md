@@ -1,6 +1,7 @@
 # ☁️ Project 1: Azure Identity & Governance Automation
 [![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)](https://azure.microsoft.com/)
 [![PowerShell](https://img.shields.io/badge/PowerShell-%235391FE.svg?style=for-the-badge&logo=powershell&logoColor=white)](https://learn.microsoft.com/en-us/powershell/azure/)
+[![JSON](https://img.shields.io/badge/JSON-%23000000.svg?style=for-the-badge&logo=json&logoColor=white)](https://www.json.org/)
 
 ## 📌 Project Overview
 This project demonstrates a production-ready setup of an Azure environment. It focuses on **Identity Lifecycle Management** and **Automated Governance**. The objective was to replace manual portal configurations with reproducible **PowerShell scripts** and **Policy as Code**.
@@ -49,8 +50,21 @@ I authored a [custom Azure Policy JSON definition](./policies/Enforce-Cost-Optim
 
 ![CLI Verification](./images/04-policy-deploy.png)
 
+### 🔍 Validation: Testing the Guardrails
+To verify the guardrails, I attempted to create a high-performance **D-Series** VM. The policy immediately flagged the violation during the validation phase.
 
+![Policy Assignment Proof](./images/05-policy-assignment.png)
+<br>
 
+When attempting to proceed, the deployment was explicitly blocked by the below message, confirming that the guardrail works.
+<br>
 
+![Policy Denial Error](./images/06-policy-denial.png)
+<br>
+
+**Key Observations:**
+* **Real-Time Enforcement:** The policy was active immediately during the VM configuration process.
+* **Activity Log Verification:** I confirmed the event in the **Azure Activity Log**, which recorded the blocked deployment with a `Forbidden` status.
+* **Traceability:** The error message explicitly cites the `Enforce-Cost-Optimised-VM-Sizes` policy as the cause, providing a clear audit trail.
 
 
