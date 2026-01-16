@@ -18,20 +18,31 @@ To design and implement a secure, segmented network architecture that facilitate
 | **Connectivity** | Azure Bastion, VPN Gateway (Conceptual) |
 
 ---
-
 ## 🚀 Phase 1: Hub-and-Spoke Network Architecture
 I architected a segmented network to simulate a multi-tier application environment, ensuring that web-facing and database-tier resources reside in isolated subnets.
 
-### 1. VNET Provisioning & Subnet Segmentation
-I deployed two primary VNETs to test cross-network connectivity:
-* **VNET-A (Production):** Divided into `Web-Subnet` and `DB-Subnet`.
-* **VNET-B (Management):** A separate network to simulate a management or shared-services hub.
+### 1. Automation via Infrastructure as Code (IaC)
+I leveraged a custom **PowerShell script** to programmatically provision the network. This ensures that IP address spaces (CIDR blocks) are allocated without overlap, which is a prerequisite for successful peering.
 
+* **Script Reference:** [`deploy-vnet.ps1`](./scripts/deploy-vnet.ps1)
 
+<img src="./images/01-deploy-vnet.png" width="600">
 
-### 2. Global VNET Peering
-To allow resources in VNET-A to communicate with VNET-B without traversing the public internet, I implemented **Global VNET Peering**. 
-* **Key Configuration:** Enabled "Allow forwarded traffic" and "Allow gateway transit" to support future hybrid connectivity.
+> *Figure 1: Execution of the automated deployment script showing clean, sequential status updates for VNET and Subnet provisioning.*
+
+### 2. Global VNET Peering & Connectivity
+To allow resources in VNET-A (Production) to communicate with VNET-B (Management) without traversing the public internet, I implemented **Global VNET Peering**. This connects the networks over the private Microsoft backbone.
+
+<img src="./images/02-verify-peering.png" width="600">
+
+> *Figure 2: CLI verification confirming the 'Connected' peering state between VNET-A-Prod and VNET-B-Mgmt.*
+
+### 3. Network Topology Visualization
+To validate the infrastructure, I used **Network Watcher** to generate a topology map. This visualizes the logical flow of traffic and confirms the isolation of the subnets within the Hub-and-Spoke model.
+
+<img src="./images/03-topology.png" width="600">
+
+> *Figure 3: Azure Network Watcher topology diagram visualizing the Hub-and-Spoke relationship and internal subnet segmentation.*
 
 ---
 
