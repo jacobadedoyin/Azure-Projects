@@ -74,12 +74,18 @@ I created a custom policy definition that targets specific missing tags. The log
 ![Policy Definition Logic](./images/05-inherit-tags-policy.png)
 
 ![Policy Definition Logic](./images/05-inherit-tags-policy.1.png)
-> **Figure 5:** Deployment of .JSON policy file via PS
+
+![Policy Definition Logic](./images/05-inherit-tags-policy.2.png)
+
+> **Figure 5(s):** Deployment of .JSON policy file via PS
 
 
-### 6. Technical Validation (Activity Log)
+### 6. Automatic inheritance
 
-### 7. Final Remediation Result
+
+
+### 7.Technical Validation (Activity Log)
+
 
 ---
 ## 🧠 Key Cloud Concepts Covered
