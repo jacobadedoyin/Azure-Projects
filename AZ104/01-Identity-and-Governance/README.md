@@ -35,7 +35,7 @@ Using `Get-AzADGroupMember` to programmatically confirm that the **Jacob Admin**
 ![CLI Verification](./images/02-cli-verification.png)
 > **Figure 2:** Verifying the Object ID and User Principal Name (UPN) are correctly mapped in Entra ID.
 
-### 3. Entra ID Portal Confirmation
+### 🔍 Validation: Testing the Guardrails
 Visual verification within the Azure Portal confirming the user status and group membership.
 <br>
 <img src="./images/03-portal-group-members.png" width="500" alt="Portal Verification">
@@ -46,7 +46,7 @@ Visual verification within the Azure Portal confirming the user status and group
 
 ## ⚖️ Phase 2: Governance & Cost Control
 
-### 4. Policy as Code: Cost Optimization
+### 3. Policy as Code: Cost Optimization
 I implemented a comprehensive governance solution using **Infrastructure as Code (IaC)**.
 
 * **Definition:** Authored a [custom JSON definition](./policies/Enforce-Cost-Optimised-VM-Sizes.json) to restrict VM sizes to the **B-Series** family.
