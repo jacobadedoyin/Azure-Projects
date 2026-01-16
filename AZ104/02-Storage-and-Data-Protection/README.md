@@ -34,6 +34,7 @@ I implemented a multi-layered security approach for the data plane:
 
 * **Data Segregation:** Architected a dedicated `data-archive` container. This provides a logical isolation boundary, separating sensitive compliance records from standard application logs to prevent accidental exposure.
 * **Identity-Based Security (Zero Trust):** Instead of using insecure Storage Account Keys (which provide broad admin access), I utilized the `--auth-mode login` flag. This enforces **Microsoft Entra ID** verification, ensuring that only identities with explicit RBAC roles can interact with the storage container.
+<br>
 
 ![Container Creation](./images/02-create-container.png)
 > *Figure 2: Container creation utilizing Entra ID authentication for Zero Trust security.*
@@ -97,7 +98,7 @@ By architecting this solution, I achieved:
 
 ---
 
-# 🧹 Clean-up & Maintenance
+## 🧹 Clean-up & Maintenance
 To prevent ongoing costs, I performed the following cleanup steps:
 1.  **Unlocked Resources:** Removed the `CanNotDelete` lock from the Resource Group.
 2.  **Resource Deletion:** Deleted the `AZ104-Lab` group to purge all storage assets.
