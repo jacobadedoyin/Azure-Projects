@@ -92,19 +92,25 @@ Finally, I updated the Storage Account firewall to only permit traffic from the 
 ---
 
 ## 🚦 Phase 3: Traffic Routing & Validation
-To control the flow of packets between subnets, I implemented **User-Defined Routes (UDR)**.
 
-* **Scenario:** All traffic originating from the `Web-Subnet` destined for the internet must be routed through a central Firewall/NVA (Network Virtual Appliance).
-* **Validation:** Used the **Network Watcher - Next Hop** tool to verify that packets were following the custom routing table instead of the default system routes.
+To control the flow of packets between subnets and enforce centralized security, I implemented **User-Defined Routes (UDR)**. This ensures that all traffic follows a specific security path rather than relying on default Azure system routes.
 
+### 1. Routing Automation (IaC)
+I automated the creation of the route table and the definition of the "Forced Tunneling" rule using PowerShell. This ensures that the network is "policy-ready" for any future Network Virtual Appliance (NVA) or Firewall deployment.
 
+* **Script Reference:** [`deploy-traffic-routing.ps1`](./scripts/deploy-traffic-routing.ps1)
 
----
+<img src="./images/09-deploy-routing.png" width="600">
 
-## 🔧 Troubleshooting & Lessons Learned
-* **Peering Mismatch:** Encountered a "Blocked" status on VNET peering. Identified that overlapping IP address spaces (Address Space overlap) prevent peering. Resolved by re-addressing VNET-B to a non-overlapping CIDR block.
-* **NSG Rule Priority:** Learned that NSG rules are processed by priority (lower numbers first). A "Deny All" rule with a lower number accidentally blocked legitimate management traffic until corrected.
-* **Effective Routes:** Utilized the "Effective Routes" view on the VM's Network Interface (NIC) to troubleshoot why a VM couldn't reach a storage account.
+> *Figure 9: Execution of the traffic routing script, confirming the creation of the Route Table and association with the Web-Subnet.*
+
+### 2. Route Table Configuration (RT-Web-to-NVA)
+I verified the configuration in the Azure Portal to confirm that all internet-bound traffic (`0.0.0.0/0`) from the **Web-Subnet** is directed to a simulated NVA IP address (**10.0.1.100**). This overrides the default "System Route" to the internet.
+
+<img src="./images/10-rt-web-to-nva.png" width="600">
+
+> *Figure 10: Final Route Table settings showing the custom user-defined route and its successful association with the production Web tier.*
+
 
 ---
 
@@ -114,4 +120,40 @@ To control the flow of packets between subnets, I implemented **User-Defined Rou
 * **Cost Efficiency:** Utilized VNET Peering instead of expensive VPN Gateways for internal cross-VNET communication where encryption at rest was sufficient.
 
 ---
+
+## 🔧 Troubleshooting & Lessons Learned
+* **Terminal Output Management:** By utilizing `$null = ...` and `| Out-Null` in the PowerShell scripts, I maintained a professional CLI experience, ensuring that only relevant status updates were displayed during the build process.
+* **Routing Priority Logic:** I learned that Azure's **Longest Prefix Match** algorithm ensures that while I force internet traffic to an NVA, local VNET and Peering traffic still follow the more specific `/16` system routes, preventing a network blackout.
+* **Effective Routes:** I practiced using the **Effective Routes** diagnostic tool (conceptually) to understand how User-Defined Routes take precedence over default System Routes.
+
+---
+
+## 📈 Final Project Impact
+With the completion of Project 03, I have successfully demonstrated a **Professional Grade Hub-and-Spoke Network** including:
+* **Private Connectivity:** Global VNET Peering for low-latency hub-spoke communication.
+* **Traffic Isolation:** NSG Micro-segmentation at the subnet level to enforce a Zero-Trust model.
+* **Service Security:** Storage Service Endpoints to keep data off the public internet.
+* **Custom Routing:** UDR for centralized traffic inspection and forced tunneling.
+
+---
+
+## 🧹 Maintenance & Resource Cleanup
+
+Managing a cloud environment requires a strategy for decommissioning resources to prevent "Cloud Sprawl" and unnecessary costs.
+
+###  Lifecycle Management (IaC Cleanup)
+To ensure cost-efficiency during the testing phases, I developed a cleanup script that removes all networking components in the correct dependency order. This ensures that resources like Peerings and Subnet Associations are detached before the VNETs are deleted.
+
+* **Script Reference:** [`cleanup-vnet.ps1`](./scripts/cleanup-vnet.ps1)
+
+```powershell
+# Logic for safe resource decommissioning
+$RG = "AZ104-Lab"
+
+# Remove Network Security Groups and Route Tables
+Remove-AzNetworkSecurityGroup -ResourceGroupName $RG -Name "NSG-Web-Tier" -Force
+Remove-AzRouteTable -ResourceGroupName $RG -Name "RT-Web-to-NVA" -Force
+
+# Final VNET Wipe (Automatically handles peering removal)
+Get-AzVirtualNetwork -ResourceGroupName $RG | Remove-AzVirtualNetwork -Force
 *Created by Jacob Adedoyin | Azure 104 Cloud Administration Portfolio*
