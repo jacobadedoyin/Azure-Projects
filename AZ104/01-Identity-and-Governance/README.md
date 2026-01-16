@@ -21,7 +21,7 @@ This project demonstrates a production-ready setup of an Azure environment. It f
 ---
 
 ## 🚀 Phase 1: Identity Automation
-I developed the `create-identities.ps1` script to programmatically provision the **IT-Admins** security group and the **Jacob Admin** user account.
+I developed the [`create-identities.ps1`](./scripts/create-identities.ps1) script to programmatically provision the **IT-Admins** security group and the **Jacob Admin** user account.
 
 ### 1. Script Execution
 The script handles user creation (`New-AzADUser`) and group membership assignment (`Add-AzADGroupMember`) in a single execution flow, reducing manual entry errors.
@@ -37,8 +37,10 @@ Using `Get-AzADGroupMember` to programmatically confirm that the **Jacob Admin**
 
 ### 🔍 Validation: Testing the Guardrails
 Visual verification within the Azure Portal confirming the user status and group membership.
+
 <br>
-<img src="./images/03-portal-group-members.png" width="500" alt="Portal Verification">
+
+<img src="./images/03-portal-group-members.png" width="400" alt="Portal Verification">
 
 > **Figure 3:** Azure Portal view of the 'IT-Admins' group members, confirming the sync was immediate.
 
