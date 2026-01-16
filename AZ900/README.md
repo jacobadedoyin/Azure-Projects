@@ -1,5 +1,5 @@
 # ☁️ Microsoft Azure Technical Portfolio (AZ-900)
-**Hand-On Implementation of Cloud Infrastructure, Governance, and Automation**
+**Hands-On Implementation of Cloud Infrastructure, Governance, and Automation**
 
 ---
 
@@ -12,9 +12,9 @@ This repository documents my hands-on implementation of Microsoft Azure core ser
 
 | Project | Focus Area | Key Technologies |
 | :--- | :--- | :--- |
-| **[Project 01: Governance & Organisation](./01-Governance-and-Organisation/)** | Enterprise Guardrails | Resource Groups, Tagging, `CanNotDelete` Locks |
-| **[Project 02: IaaS Compute & Networking](./02-IaaS-Compute-and-Networking/)** | Infrastructure Fundamentals | Virtual Machines (Ubuntu), VNet, NSG Security |
-| **[Project 03: PaaS Automation Deployment](./03-PaaS-Automation-Deployment/)** | DevOps & Modern Apps | Static Web Apps, GitHub Actions, CI/CD Pipelines |
+| **[Project 01: Governance & Organisation](./AZ900/01-Governance-and-Organisation/)** | Enterprise Guardrails | Resource Groups, Tagging, `CanNotDelete` Locks |
+| **[Project 02: IaaS Compute & Networking](./AZ900/02-IaaS-Compute-and-Networking/)** | Infrastructure Fundamentals | Virtual Machines (Ubuntu), VNet, NSG Security |
+| **[Project 03: PaaS Automation Deployment](./AZ900/03-PaaS-Automation-Deployment/)** | DevOps & Modern Apps | Static Web Apps, GitHub Actions, CI/CD Pipelines |
 
 ---
 
@@ -34,8 +34,6 @@ This repository documents my hands-on implementation of Microsoft Azure core ser
 * **Cost Center Allocation:** Implementing strategic tagging for financial accountability.
 * **Service Selection:** Choosing between IaaS and PaaS models to optimise operational overhead and cost.
 
-
-
 ---
 
 ## 🧠 Core Competencies Validated
@@ -50,4 +48,4 @@ Through these labs, I have validated proficiency in:
 **🎓 Certification Path:** AZ-900 Microsoft Azure Fundamentals
 
 ---
-*Maintained by Jacob Adedoyin-Griffiths*
+*Maintained by Jacob Adedoyin*
