@@ -1,0 +1,19 @@
+{
+  "displayName": "Enforce Low-Cost Regions Only",
+  "description": "Restricts resource deployment to approved low-cost regions to prevent regional price variance and data ingress/egress fees.",
+  "mode": "Indexed",
+  "policyRule": {
+    "if": {
+      "not": {
+        "field": "location",
+        "in": [
+          "northeurope",
+          "westeurope"
+        ]
+      }
+    },
+    "then": {
+      "effect": "deny"
+    }
+  }
+}
