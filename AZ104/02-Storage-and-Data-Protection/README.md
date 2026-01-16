@@ -20,27 +20,28 @@ To architect a secure, compliant storage solution that enforces **Data Residency
 ---
 
 ## 🚀 Phase 1: Infrastructure Deployment
-I leveraged the **Azure CLI** to programmatically provision the storage infrastructure, enforcing strict redundancy standards (LRS) and regional data residency (UK South).
+I leveraged the **Azure CLI** to programmatically provision the storage infrastructure, enforcing strict **Data Residency** (UK South) and utilizing **Infrastructure as Code (IaC)** principles for repeatability.
 
 ### 1. Storage Account Provisioning
-**Resource Creation:** Deployed a **Standard_LRS General Purpose v2** storage account, chosen for its balance of high durability and cost-efficiency for archive workloads.
+**Resource Strategy:** Deployed a **Standard_LRS General Purpose v2** account. I selected GPv2 specifically because it is the only account type that supports the required **Lifecycle Management** and **Access Tiering** (Hot/Cool/Archive) features needed for this project.
 
 ![Storage Creation](./images/01-create-storage.png)
-> *Figure 1: Bash to create Storage Account via Azure CLI.*
+> *Figure 1: Execution of the Azure CLI script to provision the storage resource.*
 
 ### 2. Container Security & Isolation
-**Data Segregation:** Architected a dedicated `data-archive` container to isolate sensitive compliance records from general application logs.
-**Zero-Trust Authentication:** Instead of using insecure Storage Account Keys, I used the `--auth-mode login` flag. This enforces **Microsoft Entra ID** authentication, ensuring that only identities with specific RBAC roles can manipulate the data plane.
+I implemented a multi-layered security approach for the data plane:
+
+* **Data Segregation:** Architected a dedicated `data-archive` container. This provides a logical isolation boundary, separating sensitive compliance records from standard application logs to prevent accidental exposure.
+* **Identity-Based Security (Zero Trust):** Instead of using insecure Storage Account Keys (which provide broad admin access), I utilized the `--auth-mode login` flag. This enforces **Microsoft Entra ID** verification, ensuring that only identities with explicit RBAC roles can interact with the storage container.
 
 ![Container Creation](./images/02-create-container.png)
-> *Figure 2: Creation of the container using Entra ID authentication.*
+> *Figure 2: Container creation utilizing Entra ID authentication for Zero Trust security.*
 
 ### 3. Deployment Validation
-**Portal Verification:** Confirmed the resource health, location, and replication settings via the Azure Portal.
+**Health Check:** Verified the resource properties in the Azure Portal to confirm that the **Locally Redundant Storage (LRS)** replication and region settings were applied correctly.
 
-![Portal View](./images/05-portal-storage-resource.png)
-> *Figure 3: Operational status verified in the Azure Portal.*
-
+![Portal View](./images/03-storage-validation.png)
+> *Figure 3: Visual confirmation of the Storage Account status in the Azure Portal.*
 ---
 
 ## ⚖️ Phase 2: Compliance & Data Governance
