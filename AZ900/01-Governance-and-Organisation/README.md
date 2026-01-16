@@ -17,7 +17,7 @@ To demonstrate the ability to organise, secure, and track Azure resources using 
 
 ---
 
-## 📸 Phase 1: Resource Tagging & Organization
+## 📸 Phase 1: Resource Tagging & Organisation
 I implemented a standardised tagging strategy at the Resource Group level. Using key-value pairs, I categorised resources to ensure clear ownership and financial accountability for internal chargebacks.
 
 ### 1. Resource Tagging Strategy
@@ -26,7 +26,7 @@ I implemented a standardised tagging strategy at the Resource Group level. Using
 
 <br>
 
-![Resource Tagging Evidence](./images/resource-group-tags.png)
+![Resource Tagging Evidence](./images/01-group-tags.png)
 > **Figure 1:** Implementation of the metadata schema on the Resource Group properties blade.
 
 ---
