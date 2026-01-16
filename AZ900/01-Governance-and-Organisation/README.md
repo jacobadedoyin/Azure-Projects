@@ -14,7 +14,6 @@ To demonstrate the ability to organise, secure, and track Azure resources using 
 | **Management Layer** | Azure Resource Manager (ARM) |
 | **Security & Compliance** | Azure Resource Locks, Azure Policy |
 | **Governance Tools** | Resource Tagging, Inheritance Logic |
-| **Region** | UK South |
 
 ---
 
@@ -30,20 +29,12 @@ I implemented a standardised tagging strategy at the Resource Group level. Using
 ![Resource Tagging Evidence](./images/resource-group-tags.png)
 > **Figure 1:** Implementation of the metadata schema on the Resource Group properties blade.
 
-### 2. Resource Group Architecture
-This view shows the logical grouping of resources. By expanding the **Essentials** section, we verify the region (UK South) and the active tags in a single unified view.
-
-<br>
-
-![Resource Group Overview](./images/resource-group-overview.png)
-> **Figure 2:** Centralised view of resource group.
-
 ---
 
 ## 🔒 Phase 2: Resource Locks & Safety Guardrails
 I applied a **'CanNotDelete'** lock to the Resource Group. This serves as a critical safety guardrail, preventing accidental deletion of production assets - a key principle of the **Azure Well-Architected Framework**.
 
-### 3. Validation: Resource Group Level
+### 2. Validation: Resource Group Level
 The system blocks any manual attempt to delete the entire Resource Group container, preserving the project's foundational structure.
 
 <br>
