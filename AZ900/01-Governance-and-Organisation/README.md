@@ -56,7 +56,7 @@ To test inheritance, I attempted to delete an individual storage account (`store
 
 <br>
 
-<img src="./images/lock-inheritance-validation.png" width="500" alt="Lock Inheritance Validation">
+<img src="./images/04-lock-inheritance-validation.png" width="500" alt="Lock Inheritance Validation">
 
 > **Figure 4:** Evidence of lock inheritance; the sub-resource is protected by the parent scope lock.
 
