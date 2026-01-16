@@ -27,26 +27,31 @@ Unlike traditional web hosting, this project uses a "Push-to-Deploy" model. By l
 ### 1. GitHub Actions Pipeline
 Every commit to the `main` branch triggers an automated build. This screenshot confirms the successful execution of the deployment workflow, demonstrating operational agility and reduced human error.
 
+<br>
+
 ![GitHub Actions Success](images/github-actions-success.png)
+> **Figure 1:** The GitHub Actions workflow run logs confirming the successful build and deployment job to Azure.
 
 ---
 
 ## 💻 Phase 2: Application Hosting (PaaS)
 By leveraging **Platform as a Service**, I eliminated the need for server management, OS patching, and web server configuration. This allows the business to focus strictly on the application code while Azure handles the underlying infrastructure.
 
-
-
 ### 2. Azure Portal Resource Management
 This view confirms the Static Web App status and reflects the abstraction of the environment. Azure natively handles the scaling and high availability of the site.
 
-![Azure Portal View](images/azure-portal-resource-view.png)
-
 <br>
+
+![Azure Portal View](images/azure-portal-resource-view.png)
+> **Figure 2:** The Azure Static Web App overview blade, highlighting the direct integration with the source GitHub repository.
 
 ### 3. Live Site Production Preview
 The final HTML application is hosted on Azure's global infrastructure. It is served via a Global CDN, ensuring low latency and high performance for users regardless of their geographic location.
 
+<br>
+
 ![Website Preview](images/website-deployment-preview.png)
+> **Figure 3:** The deployed HTML application running live on the provided Azure-generated URL.
 
 ---
 
@@ -62,4 +67,4 @@ The final HTML application is hosted on Azure's global infrastructure. It is ser
 In accordance with **Cloud Cost Management** best practices, all resources were decommissioned immediately after documentation to prevent unnecessary billing.
 
 ---
-*Created by Jacob Adedoyin-Griffiths | Azure 900 Portfolio
+*Created by Jacob Adedoyin | Azure 900 Portfolio*
