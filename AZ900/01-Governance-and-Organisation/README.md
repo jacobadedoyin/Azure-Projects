@@ -27,19 +27,28 @@ I implemented a standardised tagging strategy at the Resource Group level. Using
 <br>
 
 ![Resource Tagging Evidence](./images/01-group-tags.png)
+
 > **Figure 1:** Implementation of the metadata schema on the Resource Group properties blade.
 
 ---
 
 ## 🔒 Phase 2: Resource Locks & Safety Guardrails
-I programmatically applied a **'CanNotDelete'** lock to the Resource Group using PowerShell. This serves as a critical safety guardrail, preventing accidental deletion of production assets.
+To transition from manual configuration to **Infrastructure as Code (IaC)**, I developed a PowerShell script to apply the lock programmatically. This ensures the critical **'CanNotDelete'** guardrail is applied consistently across environments, preventing accidental deletion of production assets.
 
-```powershell
-New-AzResourceLock -LockName "Critical-Guardrail" -LockLevel CanNotDelete -ResourceGroupName "RG-Governance-Lab"
+### 2. Automation: Lock Deployment
+The script `apply-group-lock.ps1` was executed to target the resource group, instantly applying the lock without navigating the portal GUI.
 
 <br>
 
-![Resource Group Lock Test](./images/delete-lock-test.png)
+![Resource Group Lock Script](./images/02-apply-lock-ps.png)
+> **Figure 2:** Execution of the retrospective `apply-group-lock.ps1` script, automating the security control that was originally applied manually.
+
+### 3. Validation: Guardrail Enforcement
+To verify the lock's efficacy, I attempted to delete the Resource Group via the Azure Portal. The system correctly intercepted and blocked the request.
+
+<br>
+
+![Resource Group Delete Lock Test](./images/03-delete-lock-test.png)
 > **Figure 3:** The Azure Portal explicitly blocking a deletion request due to the active lock.
 
 ### 4. Validation: Scope Inheritance
