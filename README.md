@@ -17,11 +17,19 @@ Foundational labs focused on core cloud architectural components and the shared 
 * **Project 03:** [PaaS & CI/CD](./AZ900/03-PaaS-Automation-Deployment/) — Automating web deployments via GitHub Actions pipelines.
 * **Key Skills:** Cloud Service Models (IaaS/PaaS/SaaS), Governance, FinOps.
 
-### 🟦 [AZ-104: Azure Administrator](./AZ104/)
-Focuses on production-grade infrastructure, networking, and security.
-* **Featured Project:** [Secure ZRS Storage Architecture](./AZ104/01-Secure-ZRS-Storage/) - High availability and public access mitigation using Bicep.
-* **Key Skills:** Virtual Networking, RBAC, Storage Redundancy, Connectivity (Private Link).
+---
 
+### 🟦 [AZ-104: Azure Administrator](./AZ104/)
+Focuses on production-grade infrastructure, networking, automation, and security.
+
+* **Project 01:** [Identity & Governance](./AZ104/01-Identity-and-Governance/) — Implementing RBAC, Entra ID groups, and Policy compliance.
+* **Project 02:** [Storage & Data Protection](./AZ104/02-Storage-and-Data-Protection/) — Configuring ZRS, Private Endpoints, and Backup/Recovery vaults.
+* **Project 03:** [Virtual Network & Traffic Management](./AZ104/03-Virtual-Network-and-Traffic-Management/) — Hub-and-Spoke architecture, Global Peering, and UDR Forced Tunneling.
+* **Project 04:** [Compute & Monitoring (Upcoming)](./AZ104/04-Compute-and-Monitoring/) — High availability VM deployment, Load Balancing, and performance monitoring.
+
+
+
+* **Key Skills:** Hybrid Connectivity, Micro-segmentation (NSGs), Traffic Governance (UDR), Infrastructure as Code (PowerShell/Bicep).
 
 ---
 
