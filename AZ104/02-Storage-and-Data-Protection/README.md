@@ -20,16 +20,26 @@ To architect a secure, compliant storage solution that enforces **Data Residency
 ---
 
 ## 🚀 Phase 1: Infrastructure Deployment
-I utilized the **Azure CLI** to provision the storage infrastructure, ensuring specific redundancy settings (LRS) and region requirements (UK South) were met.
+I leveraged the **Azure CLI** to programmatically provision the storage infrastructure, enforcing strict redundancy standards (LRS) and regional data residency (UK South).
 
-### 1. Storage Account & Container Provisioning
-* **Resource Creation:** Deployed a Standard_LRS General Purpose v2 account.
-* **Data Isolation:** Created a dedicated `data-archive` container to segregate sensitive compliance data from standard logs.
-* **Authentication:** Utilized `--auth-mode login` to validate operations via Entra ID rather than insecure Shared Keys.
+### 1. Storage Account Provisioning
+**Resource Creation:** Deployed a **Standard_LRS General Purpose v2** storage account, chosen for its balance of high durability and cost-efficiency for archive workloads.
 
-![Storage Creation](./screenshots/01-create-storage.png)
-![Container Creation](./screenshots/02-create-container.png)
-![Portal View](./screenshots/05-portal-storage-resource.png)
+![Storage Creation](./images/01-create-storage.png)
+> *Figure 1: Bash to create Storage Account via Azure CLI.*
+
+### 2. Container Security & Isolation
+**Data Segregation:** Architected a dedicated `data-archive` container to isolate sensitive compliance records from general application logs.
+**Zero-Trust Authentication:** Instead of using insecure Storage Account Keys, I used the `--auth-mode login` flag. This enforces **Microsoft Entra ID** authentication, ensuring that only identities with specific RBAC roles can manipulate the data plane.
+
+![Container Creation](./images/02-create-container.png)
+> *Figure 2: Creation of the container using Entra ID authentication.*
+
+### 3. Deployment Validation
+**Portal Verification:** Confirmed the resource health, location, and replication settings via the Azure Portal.
+
+![Portal View](./images/05-portal-storage-resource.png)
+> *Figure 3: Operational status verified in the Azure Portal.*
 
 ---
 
@@ -41,7 +51,7 @@ I applied a **Time-Based Retention Policy** to the `data-archive` container.
 * **Configuration:** Locked data for **180 days**.
 * **Impact:** Prevents any user (including Administrators) from modifying or deleting blobs until the retention period expires, satisfying "Write Once, Read Many" requirements.
 
-![Immutability Lock](./screenshots/03-create-lock.png)
+
 
 ---
 
@@ -54,8 +64,8 @@ I defined a custom JSON policy (`Data-Aging-and-Cost-Optimisation-Policy`) to tr
 * **Archive Tier:** Moves blobs after **90 days** (Lowest storage costs).
 * **Deletion:** Purges data after **7 years (2555 days)**.
 
-![Lifecycle Policy JSON](./screenshots/04-lifecycle-policy.png)
-![Portal Lifecycle Visual](./screenshots/06-portal-lifecycle-rule.png)
+![Lifecycle Policy JSON](./images/04-lifecycle-policy.png)
+![Portal Lifecycle Visual](./images/06-portal-lifecycle-rule.png)
 
 ---
 
