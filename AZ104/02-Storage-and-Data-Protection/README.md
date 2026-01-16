@@ -1,7 +1,8 @@
-# 📦 Project 02: Storage Compliance & Data Lifecycle Automation
+# Project 02: 📦 Storage Compliance & Data Lifecycle Automation
 
 [![Azure Storage](https://img.shields.io/badge/Azure_Storage-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)](https://learn.microsoft.com/en-us/azure/storage/)
 [![Azure CLI](https://img.shields.io/badge/Azure_CLI-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)](https://learn.microsoft.com/en-us/cli/azure/)
+[![Bash Scripting](https://img.shields.io/badge/GNU%20Bash-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white)](https://www.gnu.org/software/bash/)
 [![Compliance](https://img.shields.io/badge/Compliance-WORM-green?style=for-the-badge)](https://learn.microsoft.com/en-us/azure/storage/blobs/immutable-storage-overview)
 
 ## 🎯 Project Objective
@@ -45,29 +46,37 @@ I implemented a multi-layered security approach for the data plane:
 ---
 
 ## ⚖️ Phase 2: Compliance & Data Governance
-In this phase, I enforced strict data retention rules to simulate a financial or healthcare compliance scenario.
+In this phase, I enforced strict data retention guardrails to simulate a real-world financial compliance environment.
 
-### 2. Immutability (WORM) Policy
-I applied a **Time-Based Retention Policy** to the `data-archive` container.
-* **Configuration:** Locked data for **180 days**.
-* **Impact:** Prevents any user (including Administrators) from modifying or deleting blobs until the retention period expires, satisfying "Write Once, Read Many" requirements.
+### Immutability (WORM) Implementation
+I applied a **Time-Based Retention Policy** to the `data-archive` container to ensure data integrity.
 
+* **Configuration:** Configured a rigid retention period of **180 days**.
+* **Impact (WORM):** This enforces **"Write Once, Read Many"** compliance. It strips all users—including Global Administrators—of the ability to overwrite or delete blobs until the retention timer expires, ensuring an unalterable audit trail.
+
+![Immutability Policy](./images/04-immutability-policy.png)
+> *Figure 4: CLI output confirming the Immutability Policy is active. Note the `immutabilityPeriodSinceCreationInDays: 180`.*
 
 
 ---
 
 ## 💸 Phase 3: Cost Optimization & Automation
-To prevent "Data Sprawl," I implemented an automated policy to manage the data lifecycle without human intervention.
+To proactively manage cloud OpEx and prevent "Data Sprawl," I implemented an automated lifecycle engine to handle data aging without manual intervention.
 
-### 3. JSON Lifecycle Management
-I defined a custom JSON policy (`Data-Aging-and-Cost-Optimisation-Policy`) to transition data tiers:
-* **Cool Tier:** Moves blobs after **30 days** (Lower retrieval costs).
-* **Archive Tier:** Moves blobs after **90 days** (Lowest storage costs).
-* **Deletion:** Purges data after **7 years (2555 days)**.
+### JSON-Defined Lifecycle Policy
+I defined the business logic in a custom JSON configuration file ([`Data-Aging-and-Cost-Optimisation-Policy.json`](./policies/Data-Aging-and-Cost-Optimisation-Policy.json)) and applied it programmatically via the Azure CLI.
 
-![Lifecycle Policy JSON](./images/04-lifecycle-policy.png)
+
+![Lifecycle Policy JSON](./images/05-lifecycle-policy.png)
+> *Figure 5: CLI output confirming the successful injection of the JSON policy definition.*
+
+**Tiering Logic:**
+* **Move to Cool Tier (30 Days):** Targets data accessed infrequently. This reduces storage costs by ~45% while keeping data instantly available.
+* **Move to Archive Tier (90 Days):** Transitions cold data to offline storage for long-term retention at the lowest possible price point.
+* **Auto-Delete (2555 Days / 7 Years):** Automatically purges records once the regulatory retention period expires to free up capacity.
+
 ![Portal Lifecycle Visual](./images/06-portal-lifecycle-rule.png)
-
+> *Figure 6: Azure Portal visualization of the "Hot → Cool → Archive" data flow.*
 ---
 
 ## 🔧 Troubleshooting & Lessons Learned
@@ -76,4 +85,4 @@ I defined a custom JSON policy (`Data-Aging-and-Cost-Optimisation-Policy`) to tr
 * **CLI Context:** Discovered the importance of `az account set` when working with multiple subscriptions to ensure resources deploy to the correct billing scope.
 
 ---
-*Created by Jacob Adedoyin-Griffiths | Azure Cloud Administration Portfolio*
+*Created by Jacob Adedoyin | Azure 104 Cloud Administration Portfolio*
