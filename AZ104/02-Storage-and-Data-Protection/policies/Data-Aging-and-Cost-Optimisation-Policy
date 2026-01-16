@@ -1,0 +1,19 @@
+{
+  "rules": [
+    {
+      "enabled": true,
+      "name": "ILM-Standard-Retention-Policy",
+      "type": "Lifecycle",
+      "definition": {
+        "actions": {
+          "baseBlob": {
+            "tierToCool": { "daysAfterModificationGreaterThan": 30 },
+            "tierToArchive": { "daysAfterModificationGreaterThan": 90 },
+            "delete": { "daysAfterModificationGreaterThan": 2555 } 
+          }
+        },
+        "filters": { "blobTypes": [ "blockBlob" ] }
+      }
+    }
+  ]
+}
