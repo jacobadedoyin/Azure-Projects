@@ -62,32 +62,24 @@ To test inheritance, I attempted to delete an individual storage account (`store
 
 ---
 
-## 🤖 Phase 3: Automated Policy Inheritance
-To ensure 100% compliance, I deployed a custom **Azure Policy** using the **Modify** effect. This effect actively remediates non-compliant resources by injecting required tags during the deployment phase.
+## 🤖 Phase 3: Automated Policy Inheritance (IaC)
+To ensure compliance at scale, I implemented **Policy as Code**. I defined the governance logic in a JSON file and deployed it using a PowerShell script, ensuring consistent application of tagging rules.
 
-### 5. Policy Assignment
-The policy was assigned to the `RG-Governance-Lab` scope, specifically targeting tag inheritance across all resource types to maintain metadata consistency.
 
-<br>
 
-![Policy Assignment Proof](./images/assign-policy.png)
-> **Figure 5:** Assignment of the 'Inherit Tag from Resource Group' policy at the lab scope.
+### 5. Policy Logic Definition
+I created a custom policy definition that targets specific missing tags. The logic uses the **Modify** effect to inherit the `Environment` and `AccountableParty` values directly from the parent Resource Group if they are missing on child resources.
+
+
+![Policy Definition Logic](./images/05-inherit-tags-policy.png)
+
+![Policy Definition Logic](./images/05-inherit-tags-policy.1.png)
+> **Figure 5:** Deployment of .JSON policy file via PS
+
 
 ### 6. Technical Validation (Activity Log)
-The Azure Activity Log confirms the **Modify** action was successfully triggered during the creation of a test storage account. This proves the policy intercepted the request and enforced the organisational tags.
-
-<br>
-
-![Policy Activity Log Proof](./images/policy-activity-log.png)
-> **Figure 6:** The Activity Log showing the 'Policy Action' event remediating the resource in real-time.
 
 ### 7. Final Remediation Result
-Even though tags were omitted during the manual setup of the test resource, the account now carries the inherited metadata required for corporate billing and lifecycle management.
-
-<br>
-
-![Policy Tag Validation](./images/tag-policy-validation.png)
-> **Figure 7:** Successful policy remediation showing tags applied to a resource that was originally deployed without them.
 
 ---
 ## 🧠 Key Cloud Concepts Covered
