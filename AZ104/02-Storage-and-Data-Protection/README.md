@@ -1,4 +1,4 @@
-# Project 02: 📦 Storage Compliance & Data Lifecycle Automation
+# 📦 Project 02:  Storage Compliance & Data Lifecycle Automation
 
 [![Azure Storage](https://img.shields.io/badge/Azure_Storage-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)](https://learn.microsoft.com/en-us/azure/storage/)
 [![Azure CLI](https://img.shields.io/badge/Azure_CLI-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)](https://learn.microsoft.com/en-us/cli/azure/)
