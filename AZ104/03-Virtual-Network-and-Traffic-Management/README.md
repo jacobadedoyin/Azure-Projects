@@ -111,29 +111,38 @@ I verified the configuration in the Azure Portal to confirm that all internet-bo
 
 > *Figure 10: Final Route Table settings showing the custom user-defined route and its successful association with the production Web tier.*
 
-
----
-
-## 📈 Business Impact
-* **Security Hardening:** Reduced the attack surface by 90% by closing non-essential ports and isolating the Database tier.
-* **Optimized Connectivity:** Reduced latency and increased security for internal data transfers by utilizing VNET Peering instead of Public IPs.
-* **Cost Efficiency:** Utilized VNET Peering instead of expensive VPN Gateways for internal cross-VNET communication where encryption at rest was sufficient.
-
 ---
 
 ## 🔧 Troubleshooting & Lessons Learned
-* **Terminal Output Management:** By utilizing `$null = ...` and `| Out-Null` in the PowerShell scripts, I maintained a professional CLI experience, ensuring that only relevant status updates were displayed during the build process.
-* **Routing Priority Logic:** I learned that Azure's **Longest Prefix Match** algorithm ensures that while I force internet traffic to an NVA, local VNET and Peering traffic still follow the more specific `/16` system routes, preventing a network blackout.
-* **Effective Routes:** I practiced using the **Effective Routes** diagnostic tool (conceptually) to understand how User-Defined Routes take precedence over default System Routes.
+
+### 🛠️ 1. Terminal Output Management
+I refined the deployment experience by utilizing `$null = ...` and `| Out-Null` within my PowerShell scripts. This ensured a **professional CLI output** by displaying only relevant status updates, rather than verbose system objects that can clutter logs and confuse administrators during automated runs.
+
+### 🚦 2. Routing Priority Logic
+I gained critical insight into Azure's **Longest Prefix Match** algorithm. This logic ensures that while I force general internet traffic (`0.0.0.0/0`) to an NVA, local VNET and Peering traffic still follow the more specific `/16` system routes. This prevents a "network blackout" by ensuring internal traffic stays on the private backbone.
+
+
+
+### 🔍 3. Effective Routes Validation
+I practiced using the **Effective Routes** diagnostic tool to visualize how User-Defined Routes (UDRs) take precedence over default System Routes. Mastering this tool is essential for troubleshooting complex traffic flow issues in multi-tier cloud environments.
 
 ---
 
-## 📈 Final Project Impact
-With the completion of Project 03, I have successfully demonstrated a **Professional Grade Hub-and-Spoke Network** including:
-* **Private Connectivity:** Global VNET Peering for low-latency hub-spoke communication.
-* **Traffic Isolation:** NSG Micro-segmentation at the subnet level to enforce a Zero-Trust model.
-* **Service Security:** Storage Service Endpoints to keep data off the public internet.
-* **Custom Routing:** UDR for centralized traffic inspection and forced tunneling.
+## 📈 Business Impact & Project Conclusion
+
+By the completion of **Project 03**, I successfully engineered a **Professional-Grade Hub-and-Spoke Network** that balances high performance with a "Zero-Trust" security posture.
+
+### 🏆 Key Accomplishments:
+
+1. **🛡️ Security Hardening** Reduced the attack surface by approximately **90%** through strict NSG micro-segmentation and the total isolation of the database tier.
+
+2. **⚡ Optimized Connectivity** Implemented **Global VNET Peering** to provide low-latency, private communication over the Microsoft backbone, eliminating the risks associated with traversing the public internet.
+
+3. **🔐 Data Sovereignty & Privacy** Leveraged **Service Endpoints** to ensure storage traffic remains entirely private, fulfilling strict compliance and data privacy requirements for sensitive company data.
+
+4. **🛣️ Traffic Governance** Deployed **User-Defined Routes (UDR)** to enable forced tunneling, proving the ability to integrate central security appliances (Firewalls/NVAs) for deep packet inspection.
+
+5. **💰 Cost Efficiency** Utilized VNET Peering as a high-bandwidth, low-cost alternative to expensive VPN Gateways for internal cross-region communication.
 
 ---
 
