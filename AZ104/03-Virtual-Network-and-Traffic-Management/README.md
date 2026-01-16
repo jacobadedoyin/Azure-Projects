@@ -156,4 +156,6 @@ Remove-AzRouteTable -ResourceGroupName $RG -Name "RT-Web-to-NVA" -Force
 
 # Final VNET Wipe (Automatically handles peering removal)
 Get-AzVirtualNetwork -ResourceGroupName $RG | Remove-AzVirtualNetwork -Force
+```
+---
 *Created by Jacob Adedoyin | Azure 104 Cloud Administration Portfolio*
