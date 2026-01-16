@@ -80,23 +80,35 @@ I created a custom policy definition that targets specific missing tags. The log
 > **Figure 5(s):** Deployment of .JSON policy file via PS
 
 
-### 6. Automatic inheritance
+### 6. Validation: Automatic Inheritance
+To test the automation, I deployed a new Storage Account into the Resource Group **without defining any tags manually**.
 
+As shown below, the resource was provisioned successfully, and the **Environment** and **AccountableParty** tags were automatically populated by inheriting values from the parent Resource Group.
 
+<br>
 
-### 7.Technical Validation (Activity Log)
+![Resource Auto Tags](./images/06-resource-auto-tags.png)
+> **Figure 6:** The new Storage Account showing the 'Production' and 'AccountableParty' tags were applied automatically during deployment.
 
+### 7. Technical Validation (Activity Log)
+To confirm this was performed by the Azure Policy engine (and not a default setting), I inspected the **Activity Log**.
+
+The log entry for the storage account creation confirms a **'Policy Action'** event occurred. The operation status **'Succeeded'** proves that the **Modify** effect intercepted the deployment request and injected the missing metadata in real-time.
+
+<br>
+
+![Activity Log Proof](./images/07-activitylog-storage-tag-inheritance.png)
+> **Figure 7:** The Activity Log explicitly showing the Policy 'Modify' event, confirming the automated remediation of the non-compliant resource.
 
 ---
-## 🧠 Key Cloud Concepts Covered
 
-| Concept | Description |
-| :--- | :--- |
-| **Resource Groups** | Logical containers for lifecycle management and security boundaries. |
-| **ARM Layer** | Applying governance controls via JSON-based definitions at the management plane. |
-| **Metadata Management** | Using Tags for cost center allocation and automated resource categorisation. |
-| **Inheritance** | Leveraging scope-level locks to protect child resources and simplify administration. |
-| **Policy Remediation** | Automating governance at scale using the **Modify** effect to correct non-compliant resources. |
+## 🧠 Key Cloud Concepts Covered
+* **Governance:** Using **Azure Policy** to enforce standards (tagging) rather than relying on manual discipline.
+* **Infrastructure as Code (IaC):** Defining policy logic in **JSON** and deploying it via **PowerShell**, ensuring repeatability.
+* **Hierarchy & Inheritance:** Leveraging the Resource Group as a "parent" container to cascade settings down to "child" resources.
+* **Remediation:** Using the **Modify** effect to automatically fix non-compliant resources during deployment (active governance) rather than just blocking them.
+
+---
 
 ---
 
