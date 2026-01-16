@@ -32,10 +32,10 @@ I implemented a standardised tagging strategy at the Resource Group level. Using
 ---
 
 ## 🔒 Phase 2: Resource Locks & Safety Guardrails
-I applied a **'CanNotDelete'** lock to the Resource Group. This serves as a critical safety guardrail, preventing accidental deletion of production assets - a key principle of the **Azure Well-Architected Framework**.
+I programmatically applied a **'CanNotDelete'** lock to the Resource Group using PowerShell. This serves as a critical safety guardrail, preventing accidental deletion of production assets.
 
-### 2. Validation: Resource Group Level
-The system blocks any manual attempt to delete the entire Resource Group container, preserving the project's foundational structure.
+```powershell
+New-AzResourceLock -LockName "Critical-Guardrail" -LockLevel CanNotDelete -ResourceGroupName "RG-Governance-Lab"
 
 <br>
 
