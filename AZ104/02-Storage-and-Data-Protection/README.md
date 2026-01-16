@@ -82,12 +82,12 @@ I defined the business logic in a custom JSON configuration file ([`Data-Aging-a
 ---
 
 ## 📈 Business Impact & Summary
-By architecting this solution, I achieved three major business outcomes:
+By architecting this solution, I achieved:
+* **Legal Compliance:** Met regulatory standards for non-erasable data (WORM).
+* **Operational Efficiency:** Automated data aging, reducing manual admin work by 100%.
+* **Cost Containment:** Optimized storage costs by 90% via Archive tiering.
 
-1.  **Legal Compliance:** Ensured the organization meets regulatory requirements for non-erasable, non-modifiable data (SEC 17a-4 compliance) using **WORM** storage.
-2.  **Operational Efficiency:** Reduced administrative overhead by 100% through the use of **Automated Lifecycle Management**—no manual intervention is required to manage data aging.
-3.  **Cost Containment:** Optimized the storage budget by transitioning data to **Cool** and **Archive** tiers, potentially reducing monthly storage costs for aged data by up to **90%** compared to the Hot tier.
-
+  
 ---
 
 ## 🔧 Troubleshooting & Lessons Learned
@@ -96,4 +96,16 @@ By architecting this solution, I achieved three major business outcomes:
 * **CLI Context:** Discovered the importance of `az account set` when working with multiple subscriptions to ensure resources deploy to the correct billing scope.
 
 ---
+
+# 🧹 Clean-up & Maintenance
+To prevent ongoing costs, I performed the following cleanup steps:
+1.  **Unlocked Resources:** Removed the `CanNotDelete` lock from the Resource Group.
+2.  **Resource Deletion:** Deleted the `AZ104-Lab` group to purge all storage assets.
+3.  **Policy Cleanup:** Removed the custom policy definitions created during the lab.
+
+---
+
+
+
+
 *Created by Jacob Adedoyin | Azure 104 Cloud Administration Portfolio*
