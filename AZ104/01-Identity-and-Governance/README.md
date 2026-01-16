@@ -1,4 +1,5 @@
 # ☁️ Project 1: Azure Identity & Governance Automation
+
 [![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)](https://azure.microsoft.com/)
 [![PowerShell](https://img.shields.io/badge/PowerShell-%235391FE.svg?style=for-the-badge&logo=powershell&logoColor=white)](https://learn.microsoft.com/en-us/powershell/azure/)
 [![JSON](https://img.shields.io/badge/JSON-%23000000.svg?style=for-the-badge&logo=json&logoColor=white)](https://www.json.org/)
@@ -23,60 +24,61 @@ This project demonstrates a production-ready setup of an Azure environment. It f
 I developed the `create-identities.ps1` script to programmatically provision the **IT-Admins** security group and the **Jacob Admin** user account.
 
 ### 1. Script Execution
-The script handles user creation and group membership assignment in one flow.
-
-![Script Execution](./images/01-script-execution.png)
-
+The script handles user creation (`New-AzADUser`) and group membership assignment (`Add-AzADGroupMember`) in a single execution flow, reducing manual entry errors.
 <br>
+![Script Execution](./images/01-script-execution.png)
+> **Figure 1:** PowerShell output showing the successful creation of the user and group objects.
 
 ### 2. CLI Membership Verification
-Using `Get-AzADGroupMember` to confirm that the **Jacob Admin** identity is correctly nested within the administrative group.
+Using `Get-AzADGroupMember` to programmatically confirm that the **Jacob Admin** identity is correctly nested within the administrative group.
 
 ![CLI Verification](./images/02-cli-verification.png)
-
-<br>
+> **Figure 2:** Verifying the Object ID and User Principal Name (UPN) are correctly mapped in Entra ID.
 
 ### 3. Entra ID Portal Confirmation
 Visual verification within the Azure Portal confirming the user status and group membership.
 
 ![Portal Verification](./images/03-portal-group-members.png)
+> **Figure 3:** Azure Portal view of the 'IT-Admins' group members, confirming the sync was immediate.
 
 ---
 
-### ⚖️ Phase 2: Governance & Cost Control
+## ⚖️ Phase 2: Governance & Cost Control
 
 ### 4. Policy as Code: Cost Optimization
 I authored a [custom Azure Policy JSON definition](./policies/Enforce-Cost-Optimised-VM-Sizes.json) to enforce cost governance. This policy acts as a guardrail, ensuring that only cost-effective **B-Series** virtual machines (Standard_B1s and Standard_B1ms) can be deployed.
 
-![CLI Verification](./images/04-policy-deploy.png)
+![Policy Deployment](./images/04-policy-deploy.png)
+> **Figure 4:** Deployment of JSON Policy definition to the Resource Group scope.
 
 ### 🔍 Validation: Testing the Guardrails
-To verify the guardrails, I attempted to create a high-performance **D-Series** VM.
+To verify the guardrails were active, I attempted to provision a high-performance **D-Series** VM, which falls outside the allowed SKU list.
 
-**1. Scope Restriction:**
-The VM size selector immediately reflected the policy restrictions. Non-compliant sizes were unavailable, showing that the policy was actively affecting the scope of deployable resources.
+**1. Scope Restriction**
+Upon opening the VM size selector, the policy enforcement was immediately visible. The interface indicated that resource selection was being restricted by the `Enforce-Small-VM` assignment, effectively filtering the available options.
 
 ![VM Size Scope](./images/05-vm-size-scope.png)
-<br>
 
-**2. Policy Identification:**
+
+> **Figure 5:** The VM sizing blade showing D-Series sizes are grayed out or hidden.
+<br>
+**2. Policy Identification**
 The portal explicitly identified the `Enforce-Small-VM` policy assignment as the reason for the restriction, providing immediate feedback to the user.
 
+<br>
+
 ![Policy Assignment Proof](./images/06-policy-assignment.png)
+> **Figure 6:** Error details explicitly citing the 'Enforce-Small-VM' policy assignment as the blocker.
+
+**3. Deployment Block**
+As final proof of enforcement, the system prevented the deployment with a **"Blocked by Policy"** status.
 <br>
-
-**3. Deployment Block:**
-As further proof of enforcement, the system explicitly prevented the selection of non-compliant resources with a **"Blocked by Policy"** status and the message: *"Your organization has Azure Policies in place that restrict these."*
-
 ![Policy Denial Error](./images/07-policy-denial.png)
-<br>
+> **Figure 7:** The "Validation Failed" error message, confirming it is impossible to bypass the control.
 
-**Key Observations:**
-* **Proactive Filtering:** The policy filtered the list of available VM sizes before I could even select one, saving time and preventing errors.
-* **Clear Attribution:** The portal correctly linked the restriction back to the specific `Enforce-Small-VM` policy assignment.
-* **Hard Governance:** The system enforced a hard stop with a clear "Blocked by Policy" notification, making it impossible to bypass controls.
+### 🔑 Key Observations
+* **Proactive Filtering:** The policy filtered the list of available VM sizes *before* I could even select one, saving time and preventing configuration errors.
+* **Hard Governance:** The system enforced a hard stop with a clear "Blocked by Policy" notification, ensuring strict adherence to the budget.
 
-**Key Observations:**
-* **Proactive Filtering:** The policy filtered the list of available VM sizes before I could even select one, saving time and preventing errors.
-* **Clear Attribution:** The portal correctly linked the restriction back to the specific `Enforce-Small-VM` policy assignment.
-
+---
+*Created by Jacob Adedoyin | Azure 104 Cloud Administration Portfolio*
