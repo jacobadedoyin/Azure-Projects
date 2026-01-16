@@ -75,6 +75,8 @@ I defined the business logic in a custom JSON configuration file ([`Data-Aging-a
 * **Move to Archive Tier (90 Days):** Transitions cold data to offline storage for long-term retention at the lowest possible price point.
 * **Auto-Delete (2555 Days / 7 Years):** Automatically purges records once the regulatory retention period expires to free up capacity.
 
+<br>
+
 ![Portal Lifecycle Visual](./images/06-portal-lifecycle-rule.png)
 > *Figure 6: Azure Portal visualization of the "Hot → Cool → Archive" data flow.*
 ---
