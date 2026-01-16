@@ -1,0 +1,25 @@
+# Variables
+
+RG="AZ104-Lab"
+
+LOC="uksouth"
+
+NAME="adedoyin2026" # Generates a fresh unique name
+
+
+
+echo "Task 1: Creating Storage Account..."
+
+az storage account create --name $NAME --resource-group $RG --location $LOC --sku Standard_LRS
+
+
+echo "Task 2: Creating Container 'data-archive'..."
+az storage container create --name "data-archive" --account-name $NAME
+
+
+echo "Task 3: Applying 180-day Immutability Lock..."
+az storage container immutability-policy create \
+    --account-name $NAME \
+    --container-name "data-archive" \
+    --period 180 \
+    --allow-protected-append-writes true
