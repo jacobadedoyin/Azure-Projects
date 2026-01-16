@@ -37,8 +37,9 @@ Using `Get-AzADGroupMember` to programmatically confirm that the **Jacob Admin**
 
 ### 3. Entra ID Portal Confirmation
 Visual verification within the Azure Portal confirming the user status and group membership.
+<br>
+<img src="./images/03-portal-group-members.png" width="500" alt="Portal Verification">
 
-![Portal Verification](./images/03-portal-group-members.png)
 > **Figure 3:** Azure Portal view of the 'IT-Admins' group members, confirming the sync was immediate.
 
 ---
