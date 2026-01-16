@@ -52,7 +52,7 @@ In this phase, I enforced strict data retention guardrails to simulate a real-wo
 I applied a **Time-Based Retention Policy** to the `data-archive` container to ensure data integrity.
 
 * **Configuration:** Configured a rigid retention period of **180 days**.
-* **Impact (WORM):** This enforces **"Write Once, Read Many"** compliance. It strips all users—including Global Administrators—of the ability to overwrite or delete blobs until the retention timer expires, ensuring an unalterable audit trail.
+* **Impact (WORM):** This enforces **"Write Once, Read Many"** compliance. It strips all users, including Global Administrators, of the ability to overwrite or delete blobs until the retention timer expires, ensuring an unalterable audit trail.
 
 ![Immutability Policy](./images/04-immutability-policy.png)
 > *Figure 4: CLI output confirming the Immutability Policy is active. Note the `immutabilityPeriodSinceCreationInDays: 180`.*
@@ -75,10 +75,19 @@ I defined the business logic in a custom JSON configuration file ([`Data-Aging-a
 * **Move to Archive Tier (90 Days):** Transitions cold data to offline storage for long-term retention at the lowest possible price point.
 * **Auto-Delete (2555 Days / 7 Years):** Automatically purges records once the regulatory retention period expires to free up capacity.
 
-<br>
+<img src="./images/06-portal-lifecycle-rule.png" width="500">
 
-![Portal Lifecycle Visual](./images/06-portal-lifecycle-rule.png)
 > *Figure 6: Azure Portal visualization of the "Hot → Cool → Archive" data flow.*
+
+---
+
+## 📈 Business Impact & Summary
+By architecting this solution, I achieved three major business outcomes:
+
+1.  **Legal Compliance:** Ensured the organization meets regulatory requirements for non-erasable, non-modifiable data (SEC 17a-4 compliance) using **WORM** storage.
+2.  **Operational Efficiency:** Reduced administrative overhead by 100% through the use of **Automated Lifecycle Management**—no manual intervention is required to manage data aging.
+3.  **Cost Containment:** Optimized the storage budget by transitioning data to **Cool** and **Archive** tiers, potentially reducing monthly storage costs for aged data by up to **90%** compared to the Hot tier.
+
 ---
 
 ## 🔧 Troubleshooting & Lessons Learned
