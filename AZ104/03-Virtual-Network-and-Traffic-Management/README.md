@@ -47,18 +47,47 @@ To validate the infrastructure, I used **Network Watcher** to generate a topolog
 ---
 
 ## 🛡️ Phase 2: Network Security & Micro-Segmentation
-To enforce a **Zero Trust** security model, I implemented Network Security Groups (NSGs) to act as a distributed firewall at the subnet level.
+With the infrastructure validated, I shifted to securing the data plane using a **Zero Trust** approach.
 
-### 1. Inbound Security Rules
-I configured a "Least Privilege" access model:
-* **Allow-HTTPS:** Opened Port 443 for public web traffic.
-* **Deny-All-Inbound:** A high-priority rule to block all unsolicited traffic from the internet.
-* **Management-SSH:** Restricted SSH/RDP access to a specific "Management Subnet" IP range only.
+### 1. Automated Security Deployment
+I utilized a second automation script to provision the Network Security Groups (NSGs) and link them to the appropriate subnets.
 
+* **Script Reference:** [`deploy-network-security.ps1`](./scripts/deploy-network-security.ps1)
 
+<img src="./images/04-deploy-security.png" width="600">
 
-### 2. Service Endpoints
-I enabled **Service Endpoints** for `Microsoft.Storage`. This ensures that traffic from the Virtual Machines to Azure Storage remains entirely on the Microsoft backbone network, bypassing the public internet for enhanced security and lower latency.
+> *Figure 4: Automated deployment of security layers, including NSG creation and rule mapping.*
+
+### 2. Inbound Security Rules (Least Privilege)
+I configured a strict inbound rule set for the `Web-Subnet` to minimize the attack surface.
+
+| Priority | Name | Port | Protocol | Source | Action |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| 100 | **Allow-HTTPS** | 443 | TCP | Any | Allow |
+| 110 | **Management-SSH** | 22 | TCP | 10.1.1.0/24 | Allow |
+| 4000 | **Deny-All-Inbound** | Any | Any | Any | Deny |
+
+<img src="./images/07-nsg-inbound-rules.png" width="600">
+
+> *Figure 5: The final Inbound Security Rule set as seen in the Azure Portal.*
+
+### 3. Verification & Diagnostics
+I performed final diagnostic checks using PowerShell to ensure the security rules and service endpoints were active and correctly scoped.
+
+<img src="./images/05-nsg-check.png" width="600">
+
+> *Figure 6: PowerShell verification of the NSG rule properties for the Web-Tier.*
+
+<img src="./images/06-endpoint-check.png" width="600">
+
+> *Figure 7: Subnet property verification confirming the active 'Microsoft.Storage' service endpoint.*
+
+### 4. Storage Security Lockdown
+Finally, I updated the Storage Account firewall to only permit traffic from the `Web-Subnet`. This ensures that even with a public endpoint, the data is only accessible from my trusted network.
+
+<img src="./images/08-storage-endpoint.png" width="600">
+
+> *Figure 8: Storage Account networking configuration restricted to the Production VNET.*
 
 ---
 
