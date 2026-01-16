@@ -36,10 +36,10 @@ I implemented a standardised tagging strategy at the Resource Group level. Using
 ---
 
 ## 🔒 Phase 2: Resource Locks & Safety Guardrails
-To transition from manual configuration to **Infrastructure as Code (IaC)**, I developed a PowerShell script to apply the lock programmatically. This ensures the critical **'CanNotDelete'** guardrail is applied consistently across environments, preventing accidental deletion of production assets.
+To transition from manual configuration to **Infrastructure as Code (IaC)**, I developed a PowerShell script  ([`apply-group-lock.ps1`](./scripts/apply-group-lock.ps1)) to apply a resource lock programmatically. This ensures the critical **'CanNotDelete'** guardrail can be applied consistently across environments, preventing accidental deletion of production assets.
 
 ### 2. Automation: Lock Deployment
-The script `apply-group-lock.ps1` was executed to target the resource group, instantly applying the lock without navigating the portal GUI.
+The script [`apply-group-lock.ps1`](./scripts/apply-group-lock.ps1) was executed to target the resource group, instantly applying the lock without navigating the portal GUI.
 
 <br>
 
