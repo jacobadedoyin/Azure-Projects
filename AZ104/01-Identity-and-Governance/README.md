@@ -46,10 +46,13 @@ Visual verification within the Azure Portal confirming the user status and group
 ## ⚖️ Phase 2: Governance & Cost Control
 
 ### 4. Policy as Code: Cost Optimization
-I authored a [custom Azure Policy JSON definition](./policies/Enforce-Cost-Optimised-VM-Sizes.json) to enforce cost governance. This policy acts as a guardrail, ensuring that only cost-effective **B-Series** virtual machines (Standard_B1s and Standard_B1ms) can be deployed.
+I implemented a comprehensive governance solution using **Infrastructure as Code (IaC)**.
+
+* **Definition:** Authored a [custom JSON definition](./policies/Enforce-Cost-Optimised-VM-Sizes.json) to restrict VM sizes to the **B-Series** family.
+* **Automation:** Developed a [PowerShell deployment script](./scripts/deploy-governance.ps1) to programmatically define and assign this policy to the Resource Group, ensuring repeatable enforcement without manual clicking.
 
 ![Policy Deployment](./images/04-policy-deploy.png)
-> **Figure 4:** Deployment of JSON Policy definition to the Resource Group scope.
+> **Figure 4:** Execution of the PowerShell script to deploy and assign the cost governance policy.
 
 ### 🔍 Validation: Testing the Guardrails
 To verify the guardrails were active, I attempted to provision a high-performance **D-Series** VM, which falls outside the allowed SKU list.
