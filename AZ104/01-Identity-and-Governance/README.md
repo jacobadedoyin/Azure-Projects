@@ -48,13 +48,13 @@ Visual verification within the Azure Portal confirming the user status and group
 
 ## ⚖️ Phase 2: Governance & Cost Control
 
-### 3. Policy as Code: Cost Optimization
+### 3. Policy as Code: Cost Optimisation
 I implemented a comprehensive governance solution using **Infrastructure as Code (IaC)**.
 
-* **Definition:** Authored a [custom JSON definition](./policies/Enforce-Cost-Optimised-VM-Sizes.json) to restrict VM sizes to the **B-Series** family.
+* **Definition:** Authored a [custom JSON definition](./policies/enforce-cost-optimised-vm-sizes.json) to restrict VM sizes to the **B-Series** family.
 * **Automation:** Developed a [PowerShell deployment script](./scripts/deploy-governance.ps1) to programmatically define and assign this policy to the Resource Group, ensuring repeatable enforcement without manual clicking.
 
-![Policy Deployment](./images/04-policy-deploy.png)
+![Policy Deployment](./images/04-deploy-policy.png)
 > **Figure 4:** Execution of the PowerShell script to deploy and assign the cost governance policy.
 
 ### 🔍 Validation: Testing the Guardrails
