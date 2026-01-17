@@ -4,7 +4,7 @@
 [![PaaS](https://img.shields.io/badge/Architecture-PaaS-orange.svg?style=for-the-badge)](https://learn.microsoft.com/en-us/azure/static-web-apps/overview)
 
 ## 🎯 Project Objective
-To demonstrate the deployment of a **Platform as a Service (PaaS)** solution and the implementation of a modern **CI/CD (Continuous Integration/Continuous Deployment)** pipeline using GitHub Actions.
+To demonstrate the deployment of a **Platform as a Service (PaaS)** solution and the implementation of a modern **CI/CD (Continuous Integration/Continuous Deployment)** pipeline. This project focuses on accelerating the **Developer Velocity** by automating the release cycle and leveraging serverless architecture for global scalability.
 
 ---
 
@@ -15,56 +15,56 @@ To demonstrate the deployment of a **Platform as a Service (PaaS)** solution and
 | **Automation** | GitHub Actions |
 | **Version Control** | Git / GitHub |
 | **Deployment Flow** | Continuous Deployment (CD) |
-| **Global Reach** | Content Delivery Network (CDN) |
+| **Global Reach** | Azure Content Delivery Network (CDN) |
 
 ---
 
-## 🚀 Phase 1: The DevOps Workflow
-Unlike traditional web hosting, this project uses a "Push-to-Deploy" model. By linking Azure directly to this GitHub repository, I created an automated lifecycle where code changes are verified and deployed without manual intervention.
+## 🚀 Phase 1: Automated DevOps Lifecycle
+To eliminate manual deployment bottlenecks, I implemented a "Push-to-Deploy" model. By integrating Azure Static Web Apps with the GitHub repository, I established a **Production-Ready CI/CD pipeline** that ensures consistency between the source code and the live environment.
 
 
 
-### 1. GitHub Actions Pipeline
-Every commit to the `main` branch triggers an automated build. This screenshot confirms the successful execution of the deployment workflow, demonstrating operational agility and reduced human error.
+### 1. GitHub Actions Pipeline Orchestration
+Every commit to the `main` branch triggers an automated workflow. This process validates the code and synchronizes changes to the cloud automatically, significantly reducing the **Time-to-Market** and minimising human error during deployments.
 
 <br>
 
 ![GitHub Actions Success](images/github-actions-success.png)
-> **Figure 1:** The GitHub Actions workflow run logs confirming the successful build and deployment job to Azure.
+> **Figure 1:** Successful execution of the GitHub Actions workflow, demonstrating automated build and deployment jobs.
 
 ---
 
-## 💻 Phase 2: Application Hosting (PaaS)
-By leveraging **Platform as a Service**, I eliminated the need for server management, OS patching, and web server configuration. This allows the business to focus strictly on the application code while Azure handles the underlying infrastructure.
+## 💻 Phase 2: Serverless Application Hosting (PaaS)
+By adopting a **Platform as a Service (PaaS)** model, I offloaded the "Undifferentiated Heavy Lifting"-OS patching, web server maintenance, and hardware management to Microsoft Azure. This architectural choice allows for maximum focus on application logic and user experience.
 
-### 2. Azure Portal Resource Management
-This view confirms the Static Web App status and reflects the abstraction of the environment. Azure natively handles the scaling and high availability of the site.
+### 2. Managed Infrastructure Overview
+The Azure Static Web App resource acts as a managed endpoint. Because it is serverless, it provides **Native High Availability** and **Auto-Scaling**, ensuring the application remains responsive during traffic spikes without manual intervention.
 
 <br>
 
 ![Azure Portal View](images/azure-portal-resource-view.png)
-> **Figure 2:** The Azure Static Web App overview blade, highlighting the direct integration with the source GitHub repository.
+> **Figure 2:** Azure Resource Management view, showcasing the direct link between the cloud environment and source control.
 
-### 3. Live Site Production Preview
-The final HTML application is hosted on Azure's global infrastructure. It is served via a Global CDN, ensuring low latency and high performance for users regardless of their geographic location.
+### 3. Global Distribution & Edge Performance
+The application is deployed across Azure’s **Global Content Delivery Network (CDN)**. By caching content at "Edge locations" closer to the end-user, the architecture minimises latency and provides a high-performance experience on a global scale.
 
 <br>
 
 ![Website Preview](images/website-deployment-preview.png)
-> **Figure 3:** The deployed HTML application running live on the provided Azure-generated URL.
+> **Figure 3:** The live production environment, verified and accessible via a globally distributed URL.
 
 ---
 
-## 🧠 Key Cloud Concepts Covered
-* **PaaS (Platform as a Service):** Zero server management. Microsoft manages the hardware, OS, and runtime, significantly reducing operational overhead compared to IaaS.
-* **Agility & Automation:** Using **GitHub Actions** to enable faster update cycles and consistent deployment environments.
-* **Global Distribution:** Utilizing a **CDN (Content Delivery Network)** to demonstrate the cloud's **Global Reach** and **High Availability**.
-* **Cost Efficiency:** Transitioning from "always-on" VMs to serverless static hosting to optimize cloud spend.
+## 🧠 Key Cloud Governance Concepts
+* **PaaS Efficiency:** Leveraged managed services to achieve **Zero-Touch Maintenance**, reducing the total cost of ownership (TCO).
+* **Operational Excellence:** Utilized **GitHub Actions** to enforce standardised deployment workflows.
+* **Global Reach:** Demonstrated the ability to host content at the **Network Edge** for improved performance and reliability.
+* **Serverless Cost Optimization:** Shifted from "Always-on" IaaS costs to a PaaS consumption model, optimising cloud spend for static workloads.
 
 ---
 
-## 🧹 Post-Project Cleanup
-In accordance with **Cloud Cost Management** best practices, all resources were decommissioned immediately after documentation to prevent unnecessary billing.
+## 🧹 Post-Project Lifecycle Management
+In alignment with **Cloud Financial Management (FinOps)** best practices, all project resources were decommissioned following validation to eliminate unnecessary costs and ensure clean environment hygiene.
 
 ---
 *Created by Jacob Adedoyin | Azure 900 Portfolio*
