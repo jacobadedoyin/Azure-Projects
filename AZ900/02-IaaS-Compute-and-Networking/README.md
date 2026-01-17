@@ -1,7 +1,10 @@
-# 🖥️ Project 02:  Azure IaaS Compute & Networking
-[![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)](https://azure.microsoft.com/)
-[![Networking](https://img.shields.io/badge/Networking-VNet-blue.svg?style=for-the-badge)](https://learn.microsoft.com/en-us/azure/virtual-network/)
-[![Security](https://img.shields.io/badge/Security-Hardening-red.svg?style=for-the-badge)](https://learn.microsoft.com/en-us/azure/network-security-group-overview)
+# 🖥️ Project 02: Azure IaaS Compute & Networking
+
+<a href="https://azure.microsoft.com/"><img src="https://img.shields.io/badge/🏗️_AZURE_IAAS-0072C6?style=for-the-badge&logo=microsoftazure&logoColor=white" height="50"></a>
+<a href="https://learn.microsoft.com/en-us/azure/virtual-network/"><img src="https://img.shields.io/badge/🌐_VNET_SEGMENTATION-512BD4?style=for-the-badge&logo=azure-artifacts&logoColor=white" height="50"></a>
+<a href="https://learn.microsoft.com/en-us/azure/network-security-group-overview"><img src="https://img.shields.io/badge/🛡️_NSG_HARDENING-D00000?style=for-the-badge&logo=azure-functions&logoColor=white" height="50"></a>
+<a href="https://learn.microsoft.com/en-us/azure/reliability/availability-zones-overview"><img src="https://img.shields.io/badge/📈_HIGH_AVAILABILITY-00ca53?style=for-the-badge&logo=microsoftazure&logoColor=white" height="50"></a>
+<a href="https://ubuntu.com/"><img src="https://img.shields.io/badge/🐧_UBUNTU_22.04-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" height="50"></a>
 
 ## 🎯 Project Objective
 To demonstrate the deployment of foundational Infrastructure as a Service (IaaS) components, including Virtual Machines and secure Virtual Networking, with a focus on **Network Security Hardening** and **High Availability** to ensure a resilient, production-ready cloud environment that meets enterprise compliance standards and production requirments.
