@@ -1,7 +1,9 @@
 # Project 03: 🌐 Azure Static Web Apps & CI/CD Automation
-[![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)](https://azure.microsoft.com/)
-[![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-%232088FF.svg?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/features/actions)
-[![PaaS](https://img.shields.io/badge/Architecture-PaaS-orange.svg?style=for-the-badge)](https://learn.microsoft.com/en-us/azure/static-web-apps/overview)
+
+<a href="https://azure.microsoft.com/en-us/services/static-web-apps/"><img src="https://img.shields.io/badge/☁️_PAAS_ARCHITECTURE-0072C6?style=for-the-badge&logo=microsoftazure&logoColor=white" height="50"></a>
+<a href="https://github.com/features/actions"><img src="https://img.shields.io/badge/_CI/CD_AUTOMATION-2088FF?style=for-the-badge&logo=githubactions&logoColor=white" height="50"></a>
+<a href="https://en.wikipedia.org/wiki/Serverless_computing"><img src="https://img.shields.io/badge/⚡_SERVERLESS_HOSTING-00ca53?style=for-the-badge&logo=azure-functions&logoColor=white" height="50"></a>
+<a href="https://www.finops.org/"><img src="https://img.shields.io/badge/💲_TCO_REDUCTION-E95420?style=for-the-badge&logo=square-terminal&logoColor=white" height="50"></a>
 
 ## 🎯 Project Objective
 To demonstrate the deployment of a **Platform as a Service (PaaS)** solution and the implementation of a modern **CI/CD (Continuous Integration/Continuous Deployment)** pipeline. This project focuses on accelerating the **Developer Velocity** by automating the release cycle and leveraging serverless architecture for global scalability.
