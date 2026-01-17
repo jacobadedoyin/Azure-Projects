@@ -1,51 +1,53 @@
 # ☁️ Microsoft Azure Technical Portfolio (AZ-900)
-**Hands-On Implementation of Cloud Infrastructure, Governance, and Automation**
+**Foundations of Cloud Architecture, Governance, and Modern Deployment**
+
+[![Azure](https://img.shields.io/badge/Azure-0078D4?style=for-the-badge&logo=microsoft-azure&logoColor=white)](https://azure.microsoft.com/)
+[![DevOps](https://img.shields.io/badge/DevOps-Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)](https://github.com/features/actions)
+[![Linux](https://img.shields.io/badge/Linux-Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)](https://ubuntu.com/)
+[![Governance](https://img.shields.io/badge/Governance-Policy-00C853?style=for-the-badge&logo=microsoft-azure&logoColor=white)](https://learn.microsoft.com/en-us/azure/governance/)
 
 ---
 
 ## 📌 Executive Summary
-This repository documents my hands-on implementation of Microsoft Azure core services. These projects demonstrate my ability to translate cloud theory into functional, secure, and organized cloud infrastructure, following the **Azure Well-Architected Framework**.
+This repository validates my practical mastery of the **Microsoft Azure Fundamentals (AZ-900)** curriculum. Moving beyond theory, I have architected and deployed functional cloud environments to demonstrate the core principles of **Scalability**, **High Availability**, and **Cloud Governance**.
+
+These projects serve as a proof-of-concept for the **Azure Well-Architected Framework**, translating abstract concepts into secure, running infrastructure.
 
 ---
 
 ## 🏗️ Featured Projects
 
-| Project | Focus Area | Key Technologies |
-| :--- | :--- | :--- |
-| **[Project 01: Governance & Organisation](./01-Governance-and-Organisation)** | Enterprise Guardrails | Resource Groups, Tagging, `CanNotDelete` Locks |
-| **[Project 02: IaaS Compute & Networking](./02-IaaS-Compute-and-Networking)** | Infrastructure Fundamentals | Virtual Machines (Ubuntu), VNet, NSG Security |
-| **[Project 03: PaaS Automation Deployment](./03-PaaS-Automation-Deployment)** | DevOps & Modern Apps | Static Web Apps, GitHub Actions, CI/CD Pipelines |
+| Project | Focus Area | Key Technologies | Business Value |
+| :--- | :--- | :--- | :--- |
+| **[Project 01: Governance & Compliance](./01-Governance-and-Organisation)** | **Cloud Governance** | Resource Groups, Tagging Policies, Management Locks | Prevents accidental data loss and ensures accurate financial chargebacks. |
+| **[Project 02: IaaS Compute & Networking](./02-IaaS-Compute-and-Networking)** | **Infrastructure (IaaS)** | Virtual Machines (Linux), VNet Segmentation, NSG Rules | Demonstrates secure, isolated compute power without hardware overhead. |
+| **[Project 03: PaaS & DevOps Automation](./03-PaaS-Automation-Deployment)** | **Modern Apps (PaaS)** | Azure Static Web Apps, GitHub Actions (CI/CD) | Accelerates time-to-market by automating deployment from code to cloud. |
 
 ---
 
 ## 🛠️ Technical Skills Matrix
 
-### 🔐 Security & Governance
-* **Identity Management:** Implementing RBAC and securing administrative identities.
-* **Resource Protection:** Using Resource Locks to prevent accidental deletion of critical assets.
-* **Network Security:** Hardening VM access using Network Security Groups (NSGs) and Source IP filtering.
+### ☁️ Cloud Concepts & Architecture
+* **Service Models:** Practical implementation of **IaaS** (VMs) for control vs. **PaaS** (Web Apps) for productivity.
+* **Global Infrastructure:** Leveraging **Regions** and **Availability Zones** to design resilient applications.
+* **Scalability:** Understanding the difference between Vertical Scaling (Scale Up) and Horizontal Scaling (Scale Out).
 
-### ⚙️ Automation & DevOps
-* **CI/CD:** Automating application deployments using GitHub Actions.
-* **Policy as Code:** Enforcing organisational compliance through Azure Policy definitions.
-* **Infrastructure as Code:** Scripting environment setups to ensure 100% reproducibility.
+### 🔐 Security & Identity
+* **Network Hardening:** Implementing "Zero Trust" basics using **Network Security Groups (NSGs)** to whitelist only necessary traffic (SSH/HTTP).
+* **Identity Management:** Managing access via **Entra ID** (formerly Azure AD) and verifying **Role-Based Access Control (RBAC)**.
+* **Compliance:** Using **Resource Locks** (`CanNotDelete`) to enforce operational security on critical assets.
 
 ### 💰 Cloud Economics (FinOps)
-* **Cost Center Allocation:** Implementing strategic tagging for financial accountability.
-* **Service Selection:** Choosing between IaaS and PaaS models to optimise operational overhead and cost.
+* **Cost Accountability:** Implementing a strategic **Tagging Taxonomy** (e.g., `CostCenter: IT`) to allocate spend accurately.
+* **OpEx vs. CapEx:** Optimizing costs by selecting the appropriate consumption-based model (Serverless) over fixed provisioning.
 
 ---
 
-## 🧠 Core Competencies Validated
-Through these labs, I have validated proficiency in:
-* **Cloud Service Models:** Real-world implementation of IaaS (VMs) vs. PaaS (Web Apps).
-* **Operational Security:** Implementing the "Principle of Least Privilege" via technical guardrails.
-* **Global Infrastructure:** Leveraging Availability Zones and CDNs for high-availability deployments.
+## 🎓 Certification Alignment (AZ-900)
+This portfolio provides practical evidence for the core assessment areas of the Microsoft Azure Fundamentals exam:
+
+* ✅ **Describe Cloud Concepts:** High Availability, Scalability, and Elasticity (Project 02).
+* ✅ **Describe Azure Architecture & Services:** VNets, VMs, and Web Apps (Projects 02 & 03).
+* ✅ **Describe Azure Management & Governance:** RBAC, Locks, Tags, and Cost Management (Project 01).
 
 ---
-
-**🚀 Current Status:** Practical labs complete.  
-**🎓 Certification Path:** [AZ-900 Microsoft Azure Fundamentals](https://learn.microsoft.com/en-us/credentials/certifications/azure-fundamentals/)
-
----
-*Maintained by Jacob Adedoyin | [LinkedIn](YOUR_LINK_HERE)*
