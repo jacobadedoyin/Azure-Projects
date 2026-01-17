@@ -13,8 +13,8 @@ This repository documents my hands-on implementation of Microsoft Azure core ser
 | Project | Focus Area | Key Technologies |
 | :--- | :--- | :--- |
 | **[Project 01: Governance & Organisation](./01-Governance-and-Organisation)** | Enterprise Guardrails | Resource Groups, Tagging, `CanNotDelete` Locks |
-| **[Project 02: IaaS Compute & Networking](./02-IaaS-Compute-and-Networking/)** | Infrastructure Fundamentals | Virtual Machines (Ubuntu), VNet, NSG Security |
-| **[Project 03: PaaS Automation Deployment](.//03-PaaS-Automation-Deployment/)** | DevOps & Modern Apps | Static Web Apps, GitHub Actions, CI/CD Pipelines |
+| **[Project 02: IaaS Compute & Networking](./02-IaaS-Compute-and-Networking)** | Infrastructure Fundamentals | Virtual Machines (Ubuntu), VNet, NSG Security |
+| **[Project 03: PaaS Automation Deployment](./03-PaaS-Automation-Deployment)** | DevOps & Modern Apps | Static Web Apps, GitHub Actions, CI/CD Pipelines |
 
 ---
 
@@ -45,7 +45,7 @@ Through these labs, I have validated proficiency in:
 ---
 
 **🚀 Current Status:** Practical labs complete.  
-**🎓 Certification Path:** AZ-900 Microsoft Azure Fundamentals
+**🎓 Certification Path:** [AZ-900 Microsoft Azure Fundamentals](https://learn.microsoft.com/en-us/credentials/certifications/azure-fundamentals/)
 
 ---
-*Maintained by Jacob Adedoyin*
+*Maintained by Jacob Adedoyin | [LinkedIn](YOUR_LINK_HERE)*
