@@ -4,7 +4,7 @@
 [![Security](https://img.shields.io/badge/Security-Hardening-red.svg?style=for-the-badge)](https://learn.microsoft.com/en-us/azure/network-security-group-overview)
 
 ## 🎯 Project Objective
-To demonstrate the deployment of foundational Infrastructure as a Service (IaaS) components, including Virtual Machines and secure Virtual Networking, with a focus on **Network Security Hardening** and **High Availability**.
+To demonstrate the deployment of foundational Infrastructure as a Service (IaaS) components, including Virtual Machines and secure Virtual Networking, with a focus on **Network Security Hardening** and **High Availability** to ensure a resilient, production-ready cloud environment that meets enterprise compliance standards and production requirments.
 
 ---
 
@@ -20,17 +20,25 @@ To demonstrate the deployment of foundational Infrastructure as a Service (IaaS)
 ---
 
 ## 🌐 Phase 1: Virtual Networking Infrastructure
-The backbone of the deployment is a custom Virtual Network (`vm-lab-jacob-vnet`) designed in **North Europe**. This provides the isolated private network boundary required for secure cloud communication.
-
+ I engineered a **segmented network architectur**e to align with enterprise-grade security standards. By implementing logical separation between workloads, I ensured that the infrastructure is resilient against lateral movement, effectively isolating services and narrowing the scope of potential security incidents
 
 
 ### 1. VNet & Subnet Configuration
 I configured specific address spaces and subnets to ensure logical segmentation of traffic within the environment.
 
-<br>
-
 ![VNet Configuration](images/vnet-subnets-config.png)
 > **Figure 1:** Configuration of the Virtual Network address space and subnet segmentation in the Azure Portal.
+
+**Architectural Rationale:**
+* **Threat Containment:** By partitioning the environment into functional subnets (e.g., Management vs. Application tiers), I ensured that a compromise in one zone cannot easily transition to another.
+* **Address Space Management:** Utilized a `10.0.0.0/16` CIDR block to provide a scalable IP pool, ensuring the infrastructure can grow without the need for complex and costly network re-addressing later.
+* **Regional Strategy:** Choosing **North Europe** ensures GDPR compliance and provides the low-latency performance required for regional business operations.
+
+| Subnet Name | Address Range | Purpose |
+| :--- | :--- | :--- |
+| **Default** | `10.0.0.0/24` | Primary workload and Application tier. |
+| **AzureGatewaySubnet**| `10.0.1.0/24` | Reserved for VPN/ExpressRoute connectivity. |
+
 
 ---
 
