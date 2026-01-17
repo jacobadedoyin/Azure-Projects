@@ -1,9 +1,10 @@
 # 🌐 Project 03: Virtual Networking & Traffic Management
 
-[![Architecture](https://img.shields.io/badge/Architecture-Hub_%26_Spoke-%230078D4.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)](https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)
-[![Security](https://img.shields.io/badge/Security-Zero_Trust-%23D00000.svg?style=for-the-badge&logo=microsoftsecurity&logoColor=white)](https://www.microsoft.com/en-us/security/business/zero-trust)
-[![Automation](https://img.shields.io/badge/Automation-PowerShell_Scripting-%235391FE.svg?style=for-the-badge&logo=powershell&logoColor=white)](https://learn.microsoft.com/en-us/powershell/)
-[![Governance](https://img.shields.io/badge/Governance-Compliance_as_Code-%2300C853.svg?style=for-the-badge&logo=azure&logoColor=white)](https://learn.microsoft.com/en-us/azure/governance/)
+[![Azure Networking](https://img.shields.io/badge/Azure_Networking-0078D4?style=flat-square&logo=microsoft-azure&logoColor=white)](https://learn.microsoft.com/en-us/azure/virtual-network/)
+[![PowerShell](https://img.shields.io/badge/PowerShell_Scripting-5391FE?style=flat-square&logo=powershell&logoColor=white)](https://learn.microsoft.com/en-us/powershell/azure/)
+[![Network Security](https://img.shields.io/badge/Network_Security-512BD4?style=flat-square&logo=microsoft&logoColor=white)](https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview)
+[![IaC](https://img.shields.io/badge/Infrastructure_As_Code-0078D4?style=flat-square&logo=microsoft-azure&logoColor=white)](https://en.wikipedia.org/wiki/Infrastructure_as_code)
+[![GitHub Actions](https://img.shields.io/badge/Future_Roadmap-GitHub_Actions-2088FF?style=flat-square&logo=github-actions&logoColor=white)](https://github.com/features/actions)
 
 ## 🎯 Project Objective
 To design and implement a secure, segmented network architecture that facilitates cross-region communication while maintaining strict traffic isolation. This project demonstrates the configuration of **VNET Peering**, **Network Security Groups (NSGs)** for micro-segmentation, and **Custom Routing** to control data flow.
