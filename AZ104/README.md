@@ -40,12 +40,12 @@ This repository documents my execution of advanced administrative tasks within M
 ---
 
 ## 🧠 Core Competencies Validated
-Through these complex labs, I have validated proficiency in the critical domains of the **AZ-104 Exam**:
-* **Manage Azure Identities and Governance** (20–25%)
-* **Implement and Manage Storage** (15–20%)
-* **Deploy and Manage Azure Compute Resources** (20–25%)
-* **Configure and Manage Virtual Networking** (20–25%)
-* **Monitor and Maintain Azure Resources** (10–15%)
+Through these complex labs, I have validated proficiency in the critical domains 
+* **Manage Azure Identities and Governance** 
+* **Implement and Manage Storage** 
+* **Deploy and Manage Azure Compute Resources** 
+* **Configure and Manage Virtual Networking** 
+* **Monitor and Maintain Azure Resources** 
 
 ---
 
