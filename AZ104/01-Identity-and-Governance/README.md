@@ -72,7 +72,7 @@ To further validate the hardening of the environment, I attempted to bypass the 
 
 <img src="./images/07-policy-denial.png" width="700" alt="Policy Denial Error">
 
-> **Figure 6:** *Detailed policy denial message confirming the specific 'Enforce-Cost-Optimised-VM-Sizes' policy was triggered.*
+> **Figure 6:** *Detailed policy denial message confirming out of scope sized VMs are blacklisted*
 
 ---
 
