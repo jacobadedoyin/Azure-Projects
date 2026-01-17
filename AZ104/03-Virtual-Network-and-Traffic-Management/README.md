@@ -1,10 +1,9 @@
 # 🌐 Project 03: Virtual Networking & Traffic Management
 
-[![Azure VNET](https://img.shields.io/badge/Azure%20Networking-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)](https://learn.microsoft.com/en-us/azure/virtual-network/)
-[![PowerShell](https://img.shields.io/badge/PowerShell-%235391FE.svg?style=for-the-badge&logo=powershell&logoColor=white)](https://learn.microsoft.com/en-us/powershell/azure/)
-[![Security](https://img.shields.io/badge/Security-NSG%20%26%20ASG-e74c3c?style=for-the-badge&logo=microsoftsecurity&logoColor=white)](https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview)
-[![IaC](https://img.shields.io/badge/IaC-Infrastructure%20As%20Code-blueviolet?style=for-the-badge)](https://en.wikipedia.org/wiki/Infrastructure_as_code)
-[![CI/CD](https://img.shields.io/badge/Future_Roadmap-GitHub%20Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/features/actions)
+[![Architecture](https://img.shields.io/badge/Architecture-Hub_%26_Spoke-%230078D4.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)](https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)
+[![Security](https://img.shields.io/badge/Security-Zero_Trust-%23D00000.svg?style=for-the-badge&logo=microsoftsecurity&logoColor=white)](https://www.microsoft.com/en-us/security/business/zero-trust)
+[![Automation](https://img.shields.io/badge/Automation-PowerShell_Scripting-%235391FE.svg?style=for-the-badge&logo=powershell&logoColor=white)](https://learn.microsoft.com/en-us/powershell/)
+[![Governance](https://img.shields.io/badge/Governance-Compliance_as_Code-%2300C853.svg?style=for-the-badge&logo=azure&logoColor=white)](https://learn.microsoft.com/en-us/azure/governance/)
 
 ## 🎯 Project Objective
 To design and implement a secure, segmented network architecture that facilitates cross-region communication while maintaining strict traffic isolation. This project demonstrates the configuration of **VNET Peering**, **Network Security Groups (NSGs)** for micro-segmentation, and **Custom Routing** to control data flow.
