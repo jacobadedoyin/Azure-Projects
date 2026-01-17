@@ -1,9 +1,10 @@
-# 📦 Project 02:  Storage Compliance & Data Lifecycle Automation
+# 📦 Project 02: Storage Compliance & Data Lifecycle Automation
 
 [![Azure Storage](https://img.shields.io/badge/Azure_Storage-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)](https://learn.microsoft.com/en-us/azure/storage/)
 [![Azure CLI](https://img.shields.io/badge/Azure_CLI-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)](https://learn.microsoft.com/en-us/cli/azure/)
 [![Bash Scripting](https://img.shields.io/badge/GNU%20Bash-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white)](https://www.gnu.org/software/bash/)
 [![Compliance](https://img.shields.io/badge/Compliance-WORM-green?style=for-the-badge)](https://learn.microsoft.com/en-us/azure/storage/blobs/immutable-storage-overview)
+[![IaC](https://img.shields.io/badge/IaC-Infrastructure%20As%20Code-blueviolet?style=for-the-badge)](https://en.wikipedia.org/wiki/Infrastructure_as_code)
 
 ## 🎯 Project Objective
 To architect a secure, compliant storage solution that enforces **Data Residency** and **Regulatory Retention**. This project demonstrates the implementation of **Immutable Storage (WORM)** for legal holds and **Automated Lifecycle Management** to programmatically reduce cloud spend by moving aging data to Archive tiers.
@@ -26,7 +27,8 @@ I leveraged the **Azure CLI** to programmatically provision the storage infrastr
 ### 1. Storage Account Provisioning
 **Resource Strategy:** Deployed a **Standard_LRS General Purpose v2** account. I selected GPv2 specifically because it is the only account type that supports the required **Lifecycle Management** and **Access Tiering** (Hot/Cool/Archive) features needed for this project.
 
-![Storage Creation](./images/01-create-storage.png)
+<img src="./images/01-create-storage.png" width="700" alt="Storage Creation">
+
 > *Figure 1: Execution of the Azure CLI script to provision the storage resource.*
 
 ### 2. Container Security & Isolation
@@ -34,16 +36,18 @@ I implemented a multi-layered security approach for the data plane:
 
 * **Data Segregation:** Architected a dedicated `data-archive` container. This provides a logical isolation boundary, separating sensitive compliance records from standard application logs to prevent accidental exposure.
 * **Identity-Based Security (Zero Trust):** Instead of using insecure Storage Account Keys (which provide broad admin access), I utilized the `--auth-mode login` flag. This enforces **Microsoft Entra ID** verification, ensuring that only identities with explicit RBAC roles can interact with the storage container.
-<br>
 
-![Container Creation](./images/02-create-container.png)
+<img src="./images/02-create-container.png" width="700" alt="Container Creation">
+
 > *Figure 2: Container creation utilizing Entra ID authentication for Zero Trust security.*
 
 ### 3. Deployment Validation
 **Health Check:** Verified the resource properties in the Azure Portal to confirm that the **Locally Redundant Storage (LRS)** replication and region settings were applied correctly.
 
-![Portal View](./images/03-storage-validation.png)
+<img src="./images/03-storage-validation.png" width="700" alt="Portal View">
+
 > *Figure 3: Visual confirmation of the Storage Account status in the Azure Portal.*
+
 ---
 
 ## ⚖️ Phase 2: Compliance & Data Governance
@@ -54,10 +58,11 @@ I applied a **Time-Based Retention Policy** to the `data-archive` container to e
 
 * **Configuration:** Configured a rigid retention period of **180 days**.
 * **Impact (WORM):** This enforces **"Write Once, Read Many"** compliance. It strips all users, including Global Administrators, of the ability to overwrite or delete blobs until the retention timer expires, ensuring an unalterable audit trail.
+* **Resource Locking:** Applied a `CanNotDelete` management lock to the Resource Group level to prevent accidental deletion of the control plane.
 
-![Immutability Policy](./images/04-immutability-policy.png)
+<img src="./images/04-immutability-policy.png" width="700" alt="Immutability Policy">
+
 > *Figure 4: CLI output confirming the Immutability Policy is active. Note the `immutabilityPeriodSinceCreationInDays: 180`.*
-
 
 ---
 
@@ -67,8 +72,8 @@ To proactively manage cloud OpEx and prevent "Data Sprawl," I implemented an aut
 ### JSON-Defined Lifecycle Policy
 I defined the business logic in a custom JSON configuration file ([`Data-Aging-and-Cost-Optimisation-Policy.json`](./policies/Data-Aging-and-Cost-Optimisation-Policy.json)) and applied it programmatically via the Azure CLI.
 
+<img src="./images/05-lifecycle-policy.png" width="700" alt="Lifecycle Policy JSON">
 
-![Lifecycle Policy JSON](./images/05-lifecycle-policy.png)
 > *Figure 5: CLI output confirming the successful injection of the JSON policy definition.*
 
 **Tiering Logic:**
@@ -76,7 +81,7 @@ I defined the business logic in a custom JSON configuration file ([`Data-Aging-a
 * **Move to Archive Tier (90 Days):** Transitions cold data to offline storage for long-term retention at the lowest possible price point.
 * **Auto-Delete (2555 Days / 7 Years):** Automatically purges records once the regulatory retention period expires to free up capacity.
 
-<img src="./images/06-portal-lifecycle-rule.png" width="500">
+<img src="./images/06-portal-lifecycle-rule.png" width="700" alt="Portal Lifecycle Rule">
 
 > *Figure 6: Azure Portal visualization of the "Hot → Cool → Archive" data flow.*
 
@@ -88,7 +93,6 @@ By architecting this solution, I achieved:
 * **Operational Efficiency:** Automated data aging, reducing manual admin work by 100%.
 * **Cost Containment:** Optimized storage costs by 90% via Archive tiering.
 
-  
 ---
 
 ## 🔧 Troubleshooting & Lessons Learned
@@ -100,13 +104,9 @@ By architecting this solution, I achieved:
 
 ## 🧹 Clean-up & Maintenance
 To prevent ongoing costs, I performed the following cleanup steps:
-1.  **Unlocked Resources:** Removed the `CanNotDelete` lock from the Resource Group.
-2.  **Resource Deletion:** Deleted the `AZ104-Lab` group to purge all storage assets.
-3.  **Policy Cleanup:** Removed the custom policy definitions created during the lab.
+1. **Unlocked Resources:** Removed the `CanNotDelete` lock from the Resource Group.
+2. **Resource Deletion:** Deleted the `AZ104-Lab` group to purge all storage assets.
+3. **Policy Cleanup:** Removed the custom policy definitions created during the lab.
 
 ---
-
-
-
-
 *Created by Jacob Adedoyin | Azure 104 Cloud Administration Portfolio*
