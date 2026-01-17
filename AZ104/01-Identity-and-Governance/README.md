@@ -86,7 +86,7 @@ To further validate the hardening of the environment, I attempted to bypass the 
 ## 🔮 Future Roadmap: GitOps & CI/CD
 To advance from local execution to enterprise-grade automation, the next phase focuses on implementing a **GitOps** workflow.
 
-* **Single Source of Truth:** All infrastructure code maintained Github.
+* **Single Source of Truth:** All infrastructure code maintained in Github.
 * **Future CI/CD Pipeline (GitHub Actions):**
     * **Trigger:** Pushing updates to the `AZ104/01-Identity-and-Governance/policies/` folder.
     * **Action:** Automatically running `deploy-governance.ps1` to apply governance changes to Azure.
