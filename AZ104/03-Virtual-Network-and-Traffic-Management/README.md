@@ -3,6 +3,7 @@
 [![Azure VNET](https://img.shields.io/badge/Azure_VNET-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview)
 [![NSG](https://img.shields.io/badge/Network_Security_Groups-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)](https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview)
 [![Peering](https://img.shields.io/badge/VNET_Peering-4EAA25?style=for-the-badge)](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview)
+[![IaC](https://img.shields.io/badge/IaC-Infrastructure%20As%20Code-blueviolet?style=for-the-badge)](https://en.wikipedia.org/wiki/Infrastructure_as_code)
 
 ## 🎯 Project Objective
 To design and implement a secure, segmented network architecture that facilitates cross-region communication while maintaining strict traffic isolation. This project demonstrates the configuration of **VNET Peering**, **Network Security Groups (NSGs)** for micro-segmentation, and **Custom Routing**.
@@ -26,21 +27,21 @@ I leveraged a custom **PowerShell script** to programmatically provision the net
 
 * **Script Reference:** [`deploy-vnet.ps1`](./scripts/deploy-vnet.ps1)
 
-<img src="./images/01-deploy-vnet.png" width="600">
+<img src="./images/01-deploy-vnet.png" width="700" alt="VNET Deployment">
 
 > *Figure 1: Execution of the automated deployment script showing clean, sequential status updates for VNET and Subnet provisioning.*
 
 ### 2. Global VNET Peering & Connectivity
 To allow resources in VNET-A (Production) to communicate with VNET-B (Management) without traversing the public internet, I implemented **Global VNET Peering**. This connects the networks over the private Microsoft backbone.
 
-<img src="./images/02-verify-peering.png" width="600">
+<img src="./images/02-verify-peering.png" width="700" alt="Peering Verification">
 
 > *Figure 2: CLI verification confirming the 'Connected' peering state between VNET-A-Prod and VNET-B-Mgmt.*
 
 ### 3. Network Topology Visualization
 To validate the infrastructure, I used **Network Watcher** to generate a topology map. This visualizes the logical flow of traffic and confirms the isolation of the subnets within the Hub-and-Spoke model.
 
-<img src="./images/03-topology.png" width="600">
+<img src="./images/03-topology.png" width="700" alt="Network Topology">
 
 > *Figure 3: Azure Network Watcher topology diagram visualizing the Hub-and-Spoke relationship and internal subnet segmentation.*
 
@@ -54,7 +55,7 @@ I utilized a second automation script to provision the Network Security Groups (
 
 * **Script Reference:** [`deploy-network-security.ps1`](./scripts/deploy-network-security.ps1)
 
-<img src="./images/04-deploy-security.png" width="600">
+<img src="./images/04-deploy-security.png" width="700" alt="Security Deployment">
 
 > *Figure 4: Automated deployment of security layers, including NSG creation and rule mapping.*
 
@@ -67,25 +68,25 @@ I configured a strict inbound rule set for the `Web-Subnet` to minimize the atta
 | 110 | **Management-SSH** | 22 | TCP | 10.1.1.0/24 | Allow |
 | 4000 | **Deny-All-Inbound** | Any | Any | Any | Deny |
 
-<img src="./images/07-nsg-inbound-rules.png" width="600">
+<img src="./images/07-nsg-inbound-rules.png" width="700" alt="NSG Rules">
 
 > *Figure 5: The final Inbound Security Rule set as seen in the Azure Portal.*
 
 ### 3. Verification & Diagnostics
 I performed final diagnostic checks using PowerShell to ensure the security rules and service endpoints were active and correctly scoped.
 
-<img src="./images/05-nsg-check.png" width="600">
+<img src="./images/05-nsg-check.png" width="700" alt="NSG Check">
 
 > *Figure 6: PowerShell verification of the NSG rule properties for the Web-Tier.*
 
-<img src="./images/06-endpoint-check.png" width="600">
+<img src="./images/06-endpoint-check.png" width="700" alt="Endpoint Check">
 
 > *Figure 7: Subnet property verification confirming the active 'Microsoft.Storage' service endpoint.*
 
 ### 4. Storage Security Lockdown
 Finally, I updated the Storage Account firewall to only permit traffic from the `Web-Subnet`. This ensures that even with a public endpoint, the data is only accessible from my trusted network.
 
-<img src="./images/08-storage-endpoint.png" width="600">
+<img src="./images/08-storage-endpoint.png" width="700" alt="Storage Firewall">
 
 > *Figure 8: Storage Account networking configuration restricted to the Production VNET.*
 
@@ -100,14 +101,14 @@ I automated the creation of the route table and the definition of the "Forced Tu
 
 * **Script Reference:** [`deploy-traffic-routing.ps1`](./scripts/deploy-traffic-routing.ps1)
 
-<img src="./images/09-deploy-routing.png" width="600">
+<img src="./images/09-deploy-routing.png" width="700" alt="Routing Deployment">
 
 > *Figure 9: Execution of the traffic routing script, confirming the creation of the Route Table and association with the Web-Subnet.*
 
 ### 2. Route Table Configuration (RT-Web-to-NVA)
 I verified the configuration in the Azure Portal to confirm that all internet-bound traffic (`0.0.0.0/0`) from the **Web-Subnet** is directed to a simulated NVA IP address (**10.0.1.100**). This overrides the default "System Route" to the internet.
 
-<img src="./images/10-rt-web-to-nva.png" width="600">
+<img src="./images/10-rt-web-to-nva.png" width="700" alt="Route Table Portal">
 
 > *Figure 10: Final Route Table settings showing the custom user-defined route and its successful association with the production Web tier.*
 
@@ -121,8 +122,6 @@ I refined the deployment experience by utilizing `$null = ...` and `| Out-Null` 
 ### 🚦 2. Routing Priority Logic
 I gained critical insight into Azure's **Longest Prefix Match** algorithm. This logic ensures that while I force general internet traffic (`0.0.0.0/0`) to an NVA, local VNET and Peering traffic still follow the more specific `/16` system routes. This prevents a "network blackout" by ensuring internal traffic stays on the private backbone.
 
-
-
 ### 🔍 3. Effective Routes Validation
 I practiced using the **Effective Routes** diagnostic tool to visualize how User-Defined Routes (UDRs) take precedence over default System Routes. Mastering this tool is essential for troubleshooting complex traffic flow issues in multi-tier cloud environments.
 
@@ -135,13 +134,9 @@ By the completion of **Project 03**, I successfully engineered a **Professional-
 ### 🏆 Key Accomplishments:
 
 1. **🛡️ Security Hardening** Reduced the attack surface by approximately **90%** through strict NSG micro-segmentation and the total isolation of the database tier.
-
 2. **⚡ Optimized Connectivity** Implemented **Global VNET Peering** to provide low-latency, private communication over the Microsoft backbone, eliminating the risks associated with traversing the public internet.
-
 3. **🔐 Data Sovereignty & Privacy** Leveraged **Service Endpoints** to ensure storage traffic remains entirely private, fulfilling strict compliance and data privacy requirements for sensitive company data.
-
 4. **🛣️ Traffic Governance** Deployed **User-Defined Routes (UDR)** to enable forced tunneling, proving the ability to integrate central security appliances (Firewalls/NVAs) for deep packet inspection.
-
 5. **💰 Cost Efficiency** Utilized VNET Peering as a high-bandwidth, low-cost alternative to expensive VPN Gateways for internal cross-region communication.
 
 ---
@@ -150,7 +145,7 @@ By the completion of **Project 03**, I successfully engineered a **Professional-
 
 Managing a cloud environment requires a strategy for decommissioning resources to prevent "Cloud Sprawl" and unnecessary costs.
 
-###  Lifecycle Management (IaC Cleanup)
+### Lifecycle Management (IaC Cleanup)
 To ensure cost-efficiency during the testing phases, I developed a cleanup script that removes all networking components in the correct dependency order. This ensures that resources like Peerings and Subnet Associations are detached before the VNETs are deleted.
 
 * **Script Reference:** [`cleanup-vnet.ps1`](./scripts/cleanup-vnet.ps1)
@@ -165,6 +160,3 @@ Remove-AzRouteTable -ResourceGroupName $RG -Name "RT-Web-to-NVA" -Force
 
 # Final VNET Wipe (Automatically handles peering removal)
 Get-AzVirtualNetwork -ResourceGroupName $RG | Remove-AzVirtualNetwork -Force
-```
----
-*Created by Jacob Adedoyin | Azure 104 Cloud Administration Portfolio*
