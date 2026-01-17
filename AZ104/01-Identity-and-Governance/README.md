@@ -19,7 +19,6 @@ This project demonstrates the engineering of a production-ready Azure environmen
 | **⚙️ Automation** | Azure PowerShell (Az Module) | Scalable, error-free administration and deployment. |
 | **🛡️ Governance** | Azure Policy (JSON) | Automated compliance & proactive cost prevention. |
 
-
 ---
 
 ## 🚀 Phase 1: Identity Lifecycle Architecture
@@ -62,7 +61,7 @@ I authored a [custom JSON policy](./policies/Enforce-Cost-Optimised-VM-Sizes.jso
 > **Figure 4:** *Flexible guardrail deployment via PowerShell.*
 
 ### 🛑 The Result: Hard Governance
-By embedding this logic into the Resource Provider layer, I established a "Hard Guardrail." It is now technically impossible for any user—accidental or otherwise to provision high-cost resources that exceed the allocated budget.
+By embedding this logic into the Resource Provider layer, I established a "Hard Guardrail." It is now technically impossible for any user—accidental or otherwise—to provision high-cost resources that exceed the allocated budget.
 
 <img src="./images/05-create-large-vm.png" width="700" alt="Policy block">
 
@@ -72,7 +71,7 @@ To further validate the hardening of the environment, I attempted to bypass the 
 
 <img src="./images/07-policy-denial.png" width="700" alt="Policy Denial Error">
 
-> **Figure 6:** *Detailed policy denial message confirming out of scope sized VMs are blacklisted*
+> **Figure 6:** *Detailed policy denial message confirming out-of-scope VM sizes are restricted.*
 
 ---
 
@@ -86,7 +85,7 @@ To further validate the hardening of the environment, I attempted to bypass the 
 ## 🔮 Future Roadmap: GitOps & CI/CD
 To advance from local execution to enterprise-grade automation, the next phase focuses on implementing a **GitOps** workflow.
 
-* **Single Source of Truth:** All infrastructure code maintained in Github.
+* **Single Source of Truth:** All infrastructure code maintained in GitHub.
 * **Future CI/CD Pipeline (GitHub Actions):**
     * **Trigger:** Pushing updates to the `AZ104/01-Identity-and-Governance/policies/` folder.
     * **Action:** Automatically running `deploy-governance.ps1` to apply governance changes to Azure.
@@ -100,4 +99,4 @@ In alignment with **Cloud Financial Management** best practices, I developed a d
 * **🗑️ Script Reference:** [`cleanup-governance.ps1`](./scripts/cleanup-governance.ps1)
 
 ---
-*Created by Jacob Adedoyin | AZ-104 Certification Lab*
+*Created by Jacob Adedoyin | Azure 104 Cloud Administration Portfolio*
