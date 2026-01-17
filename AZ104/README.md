@@ -13,9 +13,9 @@ This repository documents my execution of advanced administrative tasks within M
 | Project | Focus Area | Key Technologies |
 | :--- | :--- | :--- |
 | **[Project 01: Identity & Governance](./01-Identity-and-Governance/)** | Entra ID Automation | RBAC, Custom Policy Definitions, PowerShell Automation |
-| **[Project 02: Storage & Compliance](./02-Storage-and-Data-Protection/)** | Data Lifecycle & Security | Immutable Storage (WORM), Lifecycle Policies, Private Endpoints |
+| **[Project 02: Storage & Containers](./02-Storage-and-Data-Protection/)** | **Data Persistence & Compliance** | Immutable Storage (WORM), **Azure Container Instances (ACI)**, File Shares |
 | **[Project 03: Network Architecture](./03-Virtual-Network-and-Traffic-Management/)** | Secure Traffic Flow | Hub-and-Spoke, Global VNet Peering, User-Defined Routes (UDR) |
-| **[Project 04: Compute & High Availability](./04-Compute-and-High-Availability/)** | Autoscaling & Resilience | VM Scale Sets (VMSS), Standard Load Balancer, Azure Monitor |
+| **[Project 04: Compute & Operations](./04-Compute-and-High-Availability/)** | **High Availability & DR** | VM Scale Sets (VMSS), Load Balancer, **Recovery Services Vault**, **Azure Monitor** |
 
 ---
 
@@ -31,10 +31,11 @@ This repository documents my execution of advanced administrative tasks within M
 * **Connectivity:** Implementing VNet Peering and VPN Gateway logic for hybrid connectivity.
 * **Load Balancing:** Configuring Layer-4 (Load Balancer) and Layer-7 (App Gateway) traffic distribution.
 
-### ⚙️ Compute & Orchestration
-* **Autoscaling:** Configuring Virtual Machine Scale Sets to handle traffic spikes dynamically.
-* **High Availability:** Architecting for resilience using Availability Zones and Sets.
-* **Disaster Recovery:** Implementing Azure Backup policies and Recovery Services Vaults.
+### ⚙️ Compute, Storage & Containers
+* **Autoscaling:** Configuring Virtual Machine Scale Sets (VMSS) to handle traffic spikes dynamically.
+* **Containerization:** Deploying **Azure Container Instances (ACI)** with persistent volume mounts (Azure Files).
+* **Disaster Recovery (DR):** Implementing **Azure Backup** policies and Recovery Services Vaults for business continuity.
+* **Observability:** Configuring **Azure Monitor** alerts to detect and respond to CPU spikes and health probes.
 
 ---
 
