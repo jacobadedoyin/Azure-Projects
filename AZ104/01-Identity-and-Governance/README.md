@@ -38,6 +38,12 @@ I utilised the CLI to perform automated verification checks, ensuring that **Obj
 
 > *Figure 2: CLI output verifying the successful mapping of User Principal Names (UPN) to the administrative group.*
 
+### 3. Portal Synchronisation
+Visual verification within the Azure Portal confirms that the programmatic changes synchronised immediately across the global Entra ID infrastructure, ensuring the administrative group is ready for production use.
+
+<img src="./images/03-portal-group-members.png" width="700" alt="Portal Verification">
+
+> *Figure 3: Azure Portal view confirming group membership consistency.*
 
 ---
 
