@@ -18,7 +18,7 @@ This repository serves as a comprehensive documentation of my technical journey 
 * **Project 02:** [IaaS Compute & Networking](./AZ900/02-IaaS-Compute-and-Networking/) — Virtual machine deployment with NSG firewall hardening.
 * **Project 03:** [PaaS & CI/CD](./AZ900/03-PaaS-Automation-Deployment/) — Automating web deployments via GitHub Actions pipelines.
 * **Key Skills:** Cloud Service Models (IaaS/PaaS/SaaS), Governance, FinOps, Shared Responsibility.
-* **Credentials:** [Official Microsoft Transcript](https://learn.microsoft.com/en-us/users/jacobadedoyin-7806/transcript/7kngmcp55pmy5w5)
+* **Credentials:** [Official Microsoft Transcript](https://learn.microsoft.com/en-us/users/jacobadedoyin/transcript/7kngmcp55pmy5w5)
 
 ---
 
