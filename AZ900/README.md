@@ -45,9 +45,11 @@ These projects serve as a proof-of-concept for the **Azure Well-Architected Fram
 
 ## 🎓 Certification Alignment (AZ-900)
 This portfolio provides practical evidence for the core assessment areas of the Microsoft Azure Fundamentals exam:
+* **Credentials:** [Official Microsoft Transcript](https://learn.microsoft.com/en-us/users/jacobadedoyin-7806/transcript/7kngmcp55pmy5w5)
 
+* ✅ **Describe Azure Management & Governance:** RBAC, Locks, Tags, and Cost Management (Project 01).
 * ✅ **Describe Cloud Concepts:** High Availability, Scalability, and Elasticity (Project 02).
 * ✅ **Describe Azure Architecture & Services:** VNets, VMs, and Web Apps (Projects 02 & 03).
-* ✅ **Describe Azure Management & Governance:** RBAC, Locks, Tags, and Cost Management (Project 01).
+
 
 ---
