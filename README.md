@@ -5,29 +5,30 @@ This repository serves as a comprehensive documentation of my technical journey 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![Cloud](https://img.shields.io/badge/Cloud-Azure-blue)
 ![IaC](https://img.shields.io/badge/IaC-Bicep-blueviolet)
+[![Certification: AZ-900](https://img.shields.io/badge/Certification-AZ--900-green)](https://learn.microsoft.com/en-us/users/jacobadedoyin-7806/transcript/7kngmcp55pmy5w5)
 
 ---
 
 ## 📂 Portfolio Structure
 
-## 🟧 [AZ-900: Azure Fundamentals](./AZ900/)
-Foundational labs focused on core cloud architectural components and the shared responsibility model.
+## 🟧 [AZ-900: Azure Fundamentals](./AZ900/) ✅ 
+*Completed foundational labs focused on core cloud architectural components and the shared responsibility model.*
+
 * **Project 01:** [Governance & Organisation](./AZ900/01-Governance-and-Organisation/) — Logical management boundaries, tagging, and resource inheritance.
 * **Project 02:** [IaaS Compute & Networking](./AZ900/02-IaaS-Compute-and-Networking/) — Virtual machine deployment with NSG firewall hardening.
 * **Project 03:** [PaaS & CI/CD](./AZ900/03-PaaS-Automation-Deployment/) — Automating web deployments via GitHub Actions pipelines.
-* **Key Skills:** Cloud Service Models (IaaS/PaaS/SaaS), Governance, FinOps.
+* **Key Skills:** Cloud Service Models (IaaS/PaaS/SaaS), Governance, FinOps, Shared Responsibility.
+* **Credentials:** [Official Microsoft Transcript](https://learn.microsoft.com/en-us/users/jacobadedoyin-7806/transcript/7kngmcp55pmy5w5)
 
 ---
 
-### 🟦 [AZ-104: Azure Administrator](./AZ104/)
-Focuses on production-grade infrastructure, networking, automation, and security.
+### 🟦 [AZ-104: Azure Administrator](./AZ104/) 🚀
+*Focuses on production-grade infrastructure, networking, automation, and security.*
 
 * **Project 01:** [Identity & Governance](./AZ104/01-Identity-and-Governance/) — Implementing RBAC, Entra ID groups, and Policy compliance.
 * **Project 02:** [Storage & Data Protection](./AZ104/02-Storage-and-Data-Protection/) — Configuring ZRS, Private Endpoints, and Backup/Recovery vaults.
 * **Project 03:** [Virtual Network & Traffic Management](./AZ104/03-Virtual-Network-and-Traffic-Management/) — Hub-and-Spoke architecture, Global Peering, and UDR Forced Tunneling.
 * **Project 04:** [Compute & Monitoring (Upcoming)](./AZ104/04-Compute-and-Monitoring/) — High availability VM deployment, Load Balancing, and performance monitoring.
-
-
 
 * **Key Skills:** Hybrid Connectivity, Micro-segmentation (NSGs), Traffic Governance (UDR), Infrastructure as Code (PowerShell/Bicep).
 
@@ -48,6 +49,5 @@ Focuses on production-grade infrastructure, networking, automation, and security
 ---
 
 ## 🎯 Current Objectives
-- [ ] AZ-900 Fundamentals (Jan)
+- [x] AZ-900 Fundamentals (Completed Jan 2026)
 - [ ] AZ-104 Administrator Associate (In Progress)
-
